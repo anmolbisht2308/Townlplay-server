@@ -142,17 +142,17 @@ Convenience fee: global config (e.g. flat ₹X or Y%), charged to the player, sh
 
 **Goal:** a running monorepo with auth, DB, shared types, CI and deploy-ready config.
 
-- [ ] pnpm + Turborepo monorepo with `apps/web`, `apps/api`, `packages/shared`, `packages/config`
-- [ ] TypeScript strict everywhere; ESLint + Prettier; Husky + lint-staged
-- [ ] API: Express app, pino logging, request ids, centralised error handler returning `{ error: { code, message, details? } }`, Zod request validation middleware, rate limiting, helmet, CORS for the web origin
-- [ ] Mongo connection (Mongoose) with replica-set local dev (docker-compose)
-- [ ] Env validation with Zod on boot for both apps (`.env.example` committed)
-- [ ] better-auth: Google sign-in + email OTP (Resend); session cookie readable by the API; `requireAuth` and `requireRole('owner'|'admin')` middleware
-- [ ] Web: Next.js App Router, Tailwind, shadcn/ui, TanStack Query, next-intl (`en`, `hi`) with a language switcher, base layout, mobile-first
-- [ ] `packages/shared`: money utils (paise ↔ ₹ formatting), IST date/time utils, sports and amenities constants
-- [ ] Seed script: city Bareilly, one admin user
-- [ ] GitHub Actions: lint, typecheck, test on PR
-- [ ] Sentry wired in both apps
+- [x] pnpm + Turborepo monorepo with `apps/web`, `apps/api`, `packages/shared`, `packages/config`
+- [x] TypeScript strict everywhere; ESLint + Prettier; Husky + lint-staged
+- [x] API: Express app, pino logging, request ids, centralised error handler returning `{ error: { code, message, details? } }`, Zod request validation middleware, rate limiting, helmet, CORS for the web origin
+- [x] Mongo connection (Mongoose) with replica-set local dev (docker-compose)
+- [x] Env validation with Zod on boot for both apps (`.env.example` committed)
+- [x] better-auth: Google sign-in + email OTP (Resend); session cookie readable by the API; `requireAuth` and `requireRole('owner'|'admin')` middleware
+- [x] Web: Next.js App Router, Tailwind, shadcn/ui, TanStack Query, next-intl (`en`, `hi`) with a language switcher, base layout, mobile-first
+- [x] `packages/shared`: money utils (paise ↔ ₹ formatting), IST date/time utils, sports and amenities constants
+- [x] Seed script: city Bareilly, one admin user
+- [x] GitHub Actions: lint, typecheck, test on PR
+- [x] Sentry wired in both apps
 
 **Acceptance:** sign in with Google and email OTP works; `/me` returns the user; Hindi/English toggle works; CI green.
 
