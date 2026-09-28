@@ -39,8 +39,11 @@ The full roadmap is in `docs/PLAN.md`. Work on **one phase at a time** and only 
 
 ## API layout
 
-`apps/api/src`: `env.ts` (Zod, fail fast) · `app.ts` `createApp(deps)` · `server.ts` · `auth/auth.ts` (better-auth: Google + email OTP, collections `users/sessions/accounts/verifications`, mounted at `/v1/auth/*`) · `middleware/` (errorHandler, validate, auth `requireAuth(auth)` / `requireRole`) · `models/` · `routes/` · `services/email.ts` (Resend | log adapter) · `scripts/seed.ts`.
-Tests: `apps/api/test` (supertest vs `createApp`, `helpers.ts` `setupApp()` + `signInWithOtp()`). Express 5: async handlers may throw; no wrapper needed.
+`apps/api/src`: `env.ts` (Zod, fail fast) · `app.ts` `createApp(deps)` · `server.ts` · `auth/auth.ts` (better-auth: Google + email OTP, collections `users/sessions/accounts/verifications`, mounted at `/v1/auth/*`) · `middleware/` (errorHandler, validate, auth `requireAuth(auth)` / `requireRole`) · `models/` · `routes/` · `services/` (email: Resend | log adapter; listings: owner businesses/venues/courts with ownership checks; review: admin; publicListing; uploads: Cloudinary signing without the SDK; audit) · `lib/dto.ts` (never send raw documents) · `scripts/seed.ts`.
+
+- Public listing needs venue `status: live` and `businessActive: true` (denormalised; review.ts keeps it in sync). `minPricePaise` on venues is recomputed on every court change.
+- Opening hours are an array of 7 (index = weekday, 0 = Sunday). Pricing bands may not overlap on a day (shared `findPricingOverlap`).
+  Tests: `apps/api/test` (supertest vs `createApp`, `helpers.ts` `setupApp()` + `signInWithOtp()`, `factories.ts` `agent()` / `adminAgent()` / `liveVenue()`). Express 5: async handlers may throw; no wrapper needed.
 
 - `pnpm --filter @townplay/api seed` — idempotent: cities + `SEED_ADMIN_EMAIL` admin.
 - `TEST_MONGODB_URI="mongodb://localhost:27017/townplay-test?replicaSet=rs0" pnpm test` — use docker Mongo instead of mongodb-memory-server.
