@@ -164,20 +164,20 @@ Convenience fee: global config (e.g. flat ₹X or Y%), charged to the player, sh
 
 Owner side:
 
-- [ ] "List your business" onboarding: create business → add venue (details, address, map pin via lat/lng input, photos, sports, amenities, opening hours, booking policy) → submit for review
-- [ ] Resources (courts) CRUD with slot duration and pricing rules (weekday/weekend, peak/off-peak bands)
-- [ ] Signed image uploads (Cloudinary/S3), client-side compression before upload
+- [x] "List your business" onboarding: create business → add venue (details, address, map pin via lat/lng input, photos, sports, amenities, opening hours, booking policy) → submit for review
+- [x] Resources (courts) CRUD with slot duration and pricing rules (weekday/weekend, peak/off-peak bands)
+- [x] Signed image uploads (Cloudinary/S3), client-side compression before upload
 
 Admin:
 
-- [ ] Admin pages: review queue for businesses/venues (approve, reject with reason, suspend)
+- [x] Admin pages: review queue for businesses/venues (approve, reject with reason, suspend)
 
 Public:
 
-- [ ] City home `/[city]` (e.g. `/bareilly`): category tabs (Sports, Clubs, Events, Cafe events), sport filter, area filter, search
-- [ ] "Near me" using browser geolocation + `$geoNear`
-- [ ] Venue page `/[city]/venues/[slug]`: photos, sports, amenities, prices, hours, policies, **"Open in Google Maps"** link (no embedded map), call button
-- [ ] SEO: server-rendered pages, metadata, OpenGraph images, `sitemap.xml`, JSON-LD (`SportsActivityLocation`/`LocalBusiness`)
+- [x] City home `/[city]` (e.g. `/bareilly`): category tabs (Sports, Clubs, Events, Cafe events), sport filter, area filter, search
+- [x] "Near me" using browser geolocation + `$geoNear`
+- [x] Venue page `/[city]/venues/[slug]`: photos, sports, amenities, prices, hours, policies, **"Open in Google Maps"** link (no embedded map), call button
+- [x] SEO: server-rendered pages, metadata, OpenGraph images, `sitemap.xml`, JSON-LD (`SportsActivityLocation`/`LocalBusiness`)
 
 API (examples): `POST /businesses`, `POST /venues`, `PATCH /venues/:id`, `POST /venues/:id/submit`, `CRUD /venues/:id/resources`, `GET /cities/:slug/venues?category=&sport=&area=&q=&near=`, `GET /venues/by-slug/:city/:slug`, `POST /admin/venues/:id/approve`.
 

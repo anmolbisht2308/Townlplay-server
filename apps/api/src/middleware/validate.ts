@@ -20,3 +20,13 @@ export function validate(schemas: Schemas): RequestHandler {
     next();
   };
 }
+
+/** A validated route param as a string (Express 5 types params as `string | string[]`). */
+export function param(
+  req: { params: Record<string, string | string[] | undefined> },
+  name: string,
+) {
+  const value = req.params[name];
+  if (typeof value !== "string") throw new Error(`missing route param ${name}`);
+  return value;
+}

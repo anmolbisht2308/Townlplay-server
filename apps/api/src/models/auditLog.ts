@@ -1,9 +1,9 @@
-import { Schema, Types, model, type InferSchemaType } from "mongoose";
+import { Schema, model, type InferSchemaType } from "mongoose";
 
 /** Every owner/admin mutation on bookings, payments and listings is recorded here. */
 const auditLogSchema = new Schema(
   {
-    actorUserId: { type: Types.ObjectId, required: true },
+    actorUserId: { type: Schema.Types.ObjectId, required: true },
     action: { type: String, required: true },
     entityType: { type: String, required: true },
     entityId: { type: String, required: true },
