@@ -1,0 +1,8 @@
+{
+  "extends": "@townplay/config/tsconfig/node.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "."
+  },
+  "include": ["src", "test"]
+}

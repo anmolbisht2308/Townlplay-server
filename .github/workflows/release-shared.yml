@@ -1,0 +1,53 @@
+# Publishes @townplay/shared as a tarball on a GitHub Release named shared-v<version>.
+# The client repo installs it from the release URL (public, no auth needed).
+# Bump packages/shared/package.json "version" to publish a new release.
+name: Release @townplay/shared
+
+on:
+  push:
+    paths: ["packages/shared/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    # Only the default branch publishes; feature branches never release shared.
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - id: version
+        run: echo "version=$(node -p "require('./packages/shared/package.json').version")" >> "$GITHUB_OUTPUT"
+      - id: exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "shared-v${{ steps.version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "shared-v${{ steps.version.outputs.version }} already released; bump the version to publish."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.exists.outputs.exists == 'false'
+        run: pnpm install --frozen-lockfile
+      - if: steps.exists.outputs.exists == 'false'
+        run: pnpm --filter @townplay/shared build && pnpm --filter @townplay/shared test
+      - if: steps.exists.outputs.exists == 'false'
+        working-directory: packages/shared
+        run: pnpm pack
+      - if: steps.exists.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v="${{ steps.version.outputs.version }}"
+          gh release create "shared-v$v" "packages/shared/townplay-shared-$v.tgz" \
+            --target "$GITHUB_SHA" \
+            --title "@townplay/shared $v" \
+            --notes "Install in the client repo: \`\"@townplay/shared\": \"https://github.com/${{ github.repository }}/releases/download/shared-v$v/townplay-shared-$v.tgz\"\`"
