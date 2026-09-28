@@ -24,6 +24,13 @@ const envSchema = z
     RESEND_API_KEY: optional,
     EMAIL_FROM: z.string().default("Townplay <no-reply@townplay.local>"),
     SENTRY_DSN: optional,
+    /** cloudinary://<api_key>:<api_secret>@<cloud_name>. Without it photo uploads are off. */
+    CLOUDINARY_URL: optional.pipe(
+      z
+        .string()
+        .regex(/^cloudinary:\/\/[^:]+:[^@]+@.+$/, "expected cloudinary://key:secret@cloud")
+        .optional(),
+    ),
     /** Number of proxy hops in front of the api (Render + Vercel rewrite = 2). */
     TRUST_PROXY: z.coerce.number().int().nonnegative().default(0),
     /** Requests per minute per IP across /v1. */
