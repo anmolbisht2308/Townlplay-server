@@ -11,7 +11,11 @@ import type { Env } from "./env.js";
 import { HttpError } from "./lib/httpError.js";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js";
 import { healthRouter } from "./routes/health.js";
+import { adminRouter } from "./routes/admin.js";
 import { meRouter } from "./routes/me.js";
+import { ownerRouter } from "./routes/owner.js";
+import { publicRouter } from "./routes/public.js";
+import { parseCloudinaryUrl } from "./services/uploads.js";
 
 export interface AppDeps {
   env: Env;
@@ -66,7 +70,12 @@ export function createApp({ env, logger, auth }: AppDeps): Express {
 
   app.use(express.json({ limit: "100kb" }));
   app.use("/v1", health);
+  const cloudinary = env.CLOUDINARY_URL ? parseCloudinaryUrl(env.CLOUDINARY_URL) : undefined;
   app.use("/v1", meRouter(auth));
+  app.use("/v1", publicRouter());
+  app.use("/v1", adminRouter(auth));
+  // Owner routes after public ones: `/venues/by-slug/...` must not hit `/venues/:id`.
+  app.use("/v1", ownerRouter(auth, cloudinary));
 
   app.use(notFoundHandler);
   app.use(errorHandler);
