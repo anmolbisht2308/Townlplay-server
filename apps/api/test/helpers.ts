@@ -54,6 +54,8 @@ export function setupApp(overrides: Partial<typeof testEnv> = {}) {
       logger,
     });
     ctx.app = createApp({ env, logger, auth });
+    // Geo ($geoNear) and $text queries need their indexes before the first test.
+    await Promise.all(mongoose.modelNames().map((name) => mongoose.model(name).init()));
   });
 
   beforeEach(async () => {
