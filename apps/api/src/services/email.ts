@@ -1,5 +1,4 @@
 import type { Logger } from "pino";
-import { Resend } from "resend";
 
 export interface EmailMessage {
   to: string;
@@ -8,32 +7,52 @@ export interface EmailMessage {
   html?: string;
 }
 
-/** Every provider sits behind this interface; tests record, dev logs, production uses Resend. */
+/** Every provider sits behind this interface; tests record, dev logs, production uses Brevo. */
 export interface EmailSender {
   readonly name: string;
   send(message: EmailMessage): Promise<void>;
 }
 
-export class ResendEmailSender implements EmailSender {
-  readonly name = "resend";
-  private readonly client: Resend;
+/** "Townplay <no-reply@x.in>" or "no-reply@x.in" → Brevo's sender object. */
+export function parseSender(from: string): { name?: string; email: string } {
+  const m = /^\s*(.*?)\s*<([^>]+)>\s*$/.exec(from);
+  if (!m) return { email: from.trim() };
+  return m[1] ? { name: m[1].replace(/^"|"$/g, ""), email: m[2]!.trim() } : { email: m[2]!.trim() };
+}
+
+/** Brevo transactional email over its REST API (no SDK). */
+export class BrevoEmailSender implements EmailSender {
+  readonly name = "brevo";
+  private readonly sender: { name?: string; email: string };
 
   constructor(
-    apiKey: string,
-    private readonly from: string,
+    private readonly apiKey: string,
+    from: string,
+    private readonly fetchFn: typeof fetch = fetch,
   ) {
-    this.client = new Resend(apiKey);
+    this.sender = parseSender(from);
   }
 
   async send(message: EmailMessage): Promise<void> {
-    const { error } = await this.client.emails.send({
-      from: this.from,
-      to: message.to,
-      subject: message.subject,
-      text: message.text,
-      ...(message.html ? { html: message.html } : {}),
+    const res = await this.fetchFn("https://api.brevo.com/v3/smtp/email", {
+      method: "POST",
+      headers: {
+        "api-key": this.apiKey,
+        accept: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        sender: this.sender,
+        to: [{ email: message.to }],
+        subject: message.subject,
+        textContent: message.text,
+        ...(message.html ? { htmlContent: message.html } : {}),
+      }),
     });
-    if (error) throw new Error(`Resend: ${error.message}`);
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`Brevo: ${res.status} ${detail.slice(0, 300)}`);
+    }
   }
 }
 

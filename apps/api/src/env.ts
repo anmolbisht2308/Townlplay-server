@@ -22,7 +22,8 @@ const envSchema = z
     AUTH_SECRET: z.string().min(32, "AUTH_SECRET must be at least 32 characters"),
     GOOGLE_CLIENT_ID: optional,
     GOOGLE_CLIENT_SECRET: optional,
-    RESEND_API_KEY: optional,
+    /** Brevo (SMTP & API → API keys). Without it emails go to the log. */
+    BREVO_API_KEY: optional,
     EMAIL_FROM: z.string().default("Townplay <no-reply@townplay.local>"),
     SENTRY_DSN: optional,
     /** cloudinary://<api_key>:<api_secret>@<cloud_name>. Without it photo uploads are off. */
@@ -54,8 +55,8 @@ const envSchema = z
   })
   .superRefine((env, ctx) => {
     if (env.NODE_ENV !== "production") return;
-    if (!env.RESEND_API_KEY) {
-      ctx.addIssue({ code: "custom", path: ["RESEND_API_KEY"], message: "required in production" });
+    if (!env.BREVO_API_KEY) {
+      ctx.addIssue({ code: "custom", path: ["BREVO_API_KEY"], message: "required in production" });
     }
     if (env.PAYMENTS_PROVIDER !== "razorpay") {
       ctx.addIssue({

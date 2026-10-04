@@ -55,6 +55,6 @@ describe("env", () => {
 
   it("fails fast listing bad variables", () => {
     expect(() => parseEnv({ ...base, AUTH_SECRET: "short" })).toThrow(/AUTH_SECRET/);
-    expect(() => parseEnv({ ...base, NODE_ENV: "production" })).toThrow(/RESEND_API_KEY/);
+    expect(() => parseEnv({ ...base, NODE_ENV: "production" })).toThrow(/BREVO_API_KEY/);
   });
 });

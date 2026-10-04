@@ -12,15 +12,15 @@ import { createServices } from "./services/index.js";
 import { FakeGateway, RazorpayGateway } from "./services/paymentGateway.js";
 import { RecordingPushSender, WebPushSender } from "./services/push.js";
 import { parseCloudinaryUrl } from "./services/uploads.js";
-import { LogEmailSender, ResendEmailSender } from "./services/email.js";
+import { BrevoEmailSender, LogEmailSender } from "./services/email.js";
 
 const env = parseEnv(process.env);
 initSentry(env);
 const logger = createLogger(env);
 
 await connectMongo(env.MONGODB_URI);
-const email = env.RESEND_API_KEY
-  ? new ResendEmailSender(env.RESEND_API_KEY, env.EMAIL_FROM)
+const email = env.BREVO_API_KEY
+  ? new BrevoEmailSender(env.BREVO_API_KEY, env.EMAIL_FROM)
   : new LogEmailSender(logger);
 const auth = createAuth({
   env,

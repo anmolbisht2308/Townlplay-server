@@ -7,7 +7,7 @@ The full roadmap is in `docs/PLAN.md`. Work on **one phase at a time** and only 
 ## Stack
 
 - pnpm + Turborepo monorepo: `apps/web` (Next.js App Router, TS, Tailwind, shadcn/ui, TanStack Query, next-intl en/hi), `apps/api` (Node, TS, Express, Mongoose, Zod), `packages/shared` (Zod schemas, types, utils).
-- MongoDB (replica set required), Razorpay, Resend, Cloudinary, Socket.io, Agenda.
+- MongoDB (replica set required), Razorpay, Brevo (email), Cloudinary, Socket.io, Agenda.
 - No WhatsApp Business API yet. Use `wa.me` click-to-chat links where WhatsApp is needed.
 
 ## Rules
@@ -39,7 +39,7 @@ The full roadmap is in `docs/PLAN.md`. Work on **one phase at a time** and only 
 
 ## API layout
 
-`apps/api/src`: `env.ts` (Zod, fail fast) · `app.ts` `createApp(deps)` · `server.ts` · `auth/auth.ts` (better-auth: Google + email OTP, collections `users/sessions/accounts/verifications`, mounted at `/v1/auth/*`) · `middleware/` (errorHandler, validate, auth `requireAuth(auth)` / `requireRole`) · `models/` · `routes/` · `services/` (email: Resend | log adapter; listings: owner businesses/venues/courts with ownership checks; review: admin; publicListing; uploads: Cloudinary signing without the SDK; audit) · `lib/dto.ts` (never send raw documents) · `scripts/seed.ts`.
+`apps/api/src`: `env.ts` (Zod, fail fast) · `app.ts` `createApp(deps)` · `server.ts` · `auth/auth.ts` (better-auth: Google + email OTP, collections `users/sessions/accounts/verifications`, mounted at `/v1/auth/*`) · `middleware/` (errorHandler, validate, auth `requireAuth(auth)` / `requireRole`) · `models/` · `routes/` · `services/` (email: Brevo REST | log adapter; listings: owner businesses/venues/courts with ownership checks; review: admin; publicListing; uploads: Cloudinary signing without the SDK; audit) · `lib/dto.ts` (never send raw documents) · `scripts/seed.ts`.
 
 - Public listing needs venue `status: live` and `businessActive: true` (denormalised; review.ts keeps it in sync). `minPricePaise` on venues is recomputed on every court change.
 - Opening hours are an array of 7 (index = weekday, 0 = Sunday). Pricing bands may not overlap on a day (shared `findPricingOverlap`).

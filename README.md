@@ -10,4 +10,4 @@ pnpm --filter @townplay/api seed
 pnpm dev                             # api on :4000
 ```
 
-Without `RESEND_API_KEY` the OTP email is written to the api log. Google sign-in needs `GOOGLE_CLIENT_ID/SECRET` with redirect URI `<AUTH_URL>/v1/auth/callback/google`.
+Without `BREVO_API_KEY` the OTP email is written to the api log. Google sign-in needs `GOOGLE_CLIENT_ID/SECRET` with redirect URI `<AUTH_URL>/v1/auth/callback/google`.
