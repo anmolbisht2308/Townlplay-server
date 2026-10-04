@@ -7,6 +7,7 @@ pnpm install
 docker compose up -d                 # Mongo replica set rs0
 cp apps/api/.env.example apps/api/.env   # fill AUTH_SECRET (openssl rand -base64 32)
 pnpm --filter @townplay/api seed
+pnpm --filter @townplay/api seed:demo   # optional demo data (accounts, venues, bookings, events, memberships)
 pnpm dev                             # api on :4000
 ```
 

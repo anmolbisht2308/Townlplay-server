@@ -54,5 +54,6 @@ The full roadmap is in `docs/PLAN.md`. Work on **one phase at a time** and only 
   Tests: `apps/api/test` (supertest vs `createApp`, `helpers.ts` `setupApp()` + `signInWithOtp()`, `factories.ts` `agent()` / `adminAgent()` / `liveVenue()`; `ctx.clock.offsetMs` shifts the booking clock, `ctx.events` captures booking events). Express 5: async handlers may throw; no wrapper needed.
 
 - `pnpm --filter @townplay/api seed` — idempotent: cities + `SEED_ADMIN_EMAIL` admin.
+- `pnpm --filter @townplay/api seed:demo [-- --reset]` — demo owners/players, 3 live venues, bookings, open game, split, events, plan + batch (`scripts/seedDemo.ts`, through the real services; `DEMO_EMAIL=you@gmail.com` → plus-addressed accounts).
 - `TEST_MONGODB_URI="mongodb://localhost:27017/townplay-test?replicaSet=rs0" pnpm test` — use docker Mongo instead of mongodb-memory-server.
 - New env var = `env.ts` + `.env.example` + README/render config. Payments env: `PAYMENTS_PROVIDER`, `RAZORPAY_KEY_ID/KEY_SECRET/WEBHOOK_SECRET`, `PAYOUTS_MODE`, `CONVENIENCE_FEE_CONFIG`, `VAPID_PUBLIC_KEY/PRIVATE_KEY/SUBJECT` (`npx web-push generate-vapid-keys`).
