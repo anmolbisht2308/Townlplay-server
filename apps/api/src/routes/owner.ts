@@ -7,7 +7,10 @@ import {
   updateBusinessSchema,
   updateResourceSchema,
   updateVenueSchema,
+  earningsQuerySchema,
+  payoutSetupRequestSchema,
   uploadSignRequestSchema,
+  type PayoutSetupRequest,
   type CreateBusiness,
   type CreateResource,
   type CreateVenue,
@@ -23,12 +26,17 @@ import { HttpError } from "../lib/httpError.js";
 import { requireAuth, type AuthUser } from "../middleware/auth.js";
 import { param, validate } from "../middleware/validate.js";
 import * as listings from "../services/listings.js";
+import type { PayoutService } from "../services/payouts.js";
 import { signUpload, type CloudinaryConfig } from "../services/uploads.js";
 
 const resourceParams = z.object({ id: objectIdSchema, resourceId: objectIdSchema });
 
 /** Owner-side listing management. Ownership is enforced in services/listings.ts. */
-export function ownerRouter(auth: Auth, cloudinary: CloudinaryConfig | undefined): Router {
+export function ownerRouter(
+  auth: Auth,
+  cloudinary: CloudinaryConfig | undefined,
+  payouts: PayoutService,
+): Router {
   const router = Router();
   const signedIn = requireAuth(auth);
   const me = (req: { user?: AuthUser }) => req.user!;
@@ -56,6 +64,29 @@ export function ownerRouter(auth: Auth, cloudinary: CloudinaryConfig | undefined
           await listings.updateBusiness(me(req), param(req, "id"), req.body as UpdateBusiness),
         ),
       );
+    },
+  );
+
+  router.post(
+    "/businesses/:id/payout",
+    signedIn,
+    validate({ params: idParamsSchema, body: payoutSetupRequestSchema }),
+    async (req, res) => {
+      const business = await payouts.setup(
+        me(req),
+        param(req, "id"),
+        req.body as PayoutSetupRequest,
+      );
+      res.json(toBusiness(business));
+    },
+  );
+  router.get(
+    "/businesses/:id/earnings",
+    signedIn,
+    validate({ params: idParamsSchema, query: earningsQuerySchema }),
+    async (req, res) => {
+      const { from, to } = res.locals.query as z.infer<typeof earningsQuerySchema>;
+      res.json(await payouts.earnings(me(req), param(req, "id"), from, to));
     },
   );
 

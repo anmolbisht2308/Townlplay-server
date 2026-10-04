@@ -189,16 +189,16 @@ API (examples): `POST /businesses`, `POST /venues`, `PATCH /venues/:id`, `POST /
 
 **Goal:** real bookings with zero double-booking, and a calendar owners actually trust.
 
-- [ ] Availability API: `GET /resources/:id/availability?date=` (and a venue-level variant for all resources) with price per slot from pricing rules
-- [ ] Player booking UI: date strip (next 14 days), resource tabs, slot grid (available / taken / past), multi-select consecutive slots, price summary, customer name + phone
-- [ ] Hold → pending booking per §3 (payment is mocked in this phase: a dev-only "confirm" endpoint)
-- [ ] Owner calendar: day view by resource (columns) × time (rows), colour by status/source; click a free slot to add walk-in/phone booking or block; click a booking for details
-- [ ] Mark balance collected (cash/UPI), mark no-show, mark completed
-- [ ] Live updates on the owner calendar via Socket.io (room per venue) when bookings are created/cancelled
-- [ ] Player "My bookings" (upcoming/past), booking detail with code and venue contact
-- [ ] Cancellation by player (policy-aware; refund calculated, executed in Phase 3) and by owner
-- [ ] Jobs (Agenda): expire stale holds, auto-complete bookings after end time
-- [ ] **Tests:** unit tests for slot generation and pricing (incl. slots crossing band boundaries, closed days); **concurrency test** for holds; API integration tests for hold/confirm/cancel
+- [x] Availability API: `GET /resources/:id/availability?date=` (and a venue-level variant for all resources) with price per slot from pricing rules
+- [x] Player booking UI: date strip (next 14 days), resource tabs, slot grid (available / taken / past), multi-select consecutive slots, price summary, customer name + phone
+- [x] Hold → pending booking per §3 (payment is mocked in this phase: a dev-only "confirm" endpoint)
+- [x] Owner calendar: day view by resource (columns) × time (rows), colour by status/source; click a free slot to add walk-in/phone booking or block; click a booking for details
+- [x] Mark balance collected (cash/UPI), mark no-show, mark completed
+- [x] Live updates on the owner calendar via Socket.io (room per venue) when bookings are created/cancelled
+- [x] Player "My bookings" (upcoming/past), booking detail with code and venue contact
+- [x] Cancellation by player (policy-aware; refund calculated, executed in Phase 3) and by owner
+- [x] Jobs (Agenda): expire stale holds, auto-complete bookings after end time
+- [x] **Tests:** unit tests for slot generation and pricing (incl. slots crossing band boundaries, closed days); **concurrency test** for holds; API integration tests for hold/confirm/cancel
 
 **Acceptance:** 50 parallel hold requests for the same slot → exactly 1 success; owner walk-in on a slot makes it unavailable online instantly; calendar updates live in a second browser tab.
 
@@ -208,17 +208,17 @@ API (examples): `POST /businesses`, `POST /venues`, `PATCH /venues/:id`, `POST /
 
 **Goal:** online advance payment, refunds, and money reaching venue owners.
 
-- [ ] Razorpay integration per §4 (orders, checkout, verify, webhooks, idempotency)
-- [ ] Replace the mocked confirm with real payment confirmation
-- [ ] Late-payment edge case and auto-refund (§3.5)
-- [ ] Refunds on cancellation per venue policy; owner-initiated cancellations always refund in full
-- [ ] Convenience fee configuration (admin settings) and a transparent price breakdown in checkout
-- [ ] Business payout setup: collect KYC/bank details → create Razorpay Route linked account (feature-flagged); `manual` mode shows an admin payouts report instead
-- [ ] Owner earnings page: bookings, advance collected online, balance collected at venue, fees, payouts
-- [ ] Transactional emails (React Email + Resend): booking confirmed, cancelled, refund processed; owner: new booking, cancellation
-- [ ] **Click-to-chat buttons:** on the booking confirmation page ("Send details to venue on WhatsApp") and in the owner dashboard ("Send confirmation to customer") using `wa.me` links with prefilled text — no API
-- [ ] Web push for owners (new booking / cancellation) via the PWA service worker
-- [ ] **Tests:** webhook signature verification, idempotent replays, refund calculation, late-payment path
+- [x] Razorpay integration per §4 (orders, checkout, verify, webhooks, idempotency)
+- [x] Replace the mocked confirm with real payment confirmation
+- [x] Late-payment edge case and auto-refund (§3.5)
+- [x] Refunds on cancellation per venue policy; owner-initiated cancellations always refund in full
+- [x] Convenience fee configuration (admin settings) and a transparent price breakdown in checkout
+- [x] Business payout setup: collect KYC/bank details → create Razorpay Route linked account (feature-flagged); `manual` mode shows an admin payouts report instead
+- [x] Owner earnings page: bookings, advance collected online, balance collected at venue, fees, payouts
+- [x] Transactional emails (React Email + Resend): booking confirmed, cancelled, refund processed; owner: new booking, cancellation
+- [x] **Click-to-chat buttons:** on the booking confirmation page ("Send details to venue on WhatsApp") and in the owner dashboard ("Send confirmation to customer") using `wa.me` links with prefilled text — no API
+- [x] Web push for owners (new booking / cancellation) via the PWA service worker
+- [x] **Tests:** webhook signature verification, idempotent replays, refund calculation, late-payment path
 
 **Acceptance:** in Razorpay test mode, a player pays the advance via UPI and the booking confirms from the webhook even if the browser is closed; duplicate webhooks don't double-process; cancellation before cutoff triggers the right refund.
 
@@ -228,16 +228,16 @@ API (examples): `POST /businesses`, `POST /venues`, `PATCH /venues/:id`, `POST /
 
 **Goal:** seasonal and cafe events with tiers, QR tickets and door check-in. (Aim to ship this before a festival.)
 
-- [ ] Event creation for businesses (title, type, dates, venue or custom address, photos, description, age limit, tiers with capacity), admin review
-- [ ] Public: `/[city]/events` listing (this week, this weekend, by type), event page with tiers and remaining count
-- [ ] Checkout: reserve tickets by atomically decrementing `tiers.$.remaining` with a filter `remaining >= qty`; hold for 10 min; release on expiry (job); pay via Razorpay; issue `tickets` with random `qrToken`
-- [ ] Free events: RSVP flow (price 0) with capacity
-- [ ] Ticket page for the player with QR codes; add-to-calendar (.ics)
-- [ ] Organiser check-in page (mobile): scan QR with camera, validate token, mark `checkedInAt`, show "already checked in" on reuse; manual search by name/phone as fallback
-- [ ] Organiser dashboard: sales by tier, attendee list export (CSV), check-in count
-- [ ] Event cancellation → refund all paid orders
-- [ ] Emails: ticket confirmation (with ticket link), event reminder (day before)
-- [ ] **Tests:** oversell protection under concurrency, QR reuse, hold expiry releases capacity
+- [x] Event creation for businesses (title, type, dates, venue or custom address, photos, description, age limit, tiers with capacity), admin review
+- [x] Public: `/[city]/events` listing (this week, this weekend, by type), event page with tiers and remaining count
+- [x] Checkout: reserve tickets by atomically decrementing `tiers.$.remaining` with a filter `remaining >= qty`; hold for 10 min; release on expiry (job); pay via Razorpay; issue `tickets` with random `qrToken`
+- [x] Free events: RSVP flow (price 0) with capacity
+- [x] Ticket page for the player with QR codes; add-to-calendar (.ics)
+- [x] Organiser check-in page (mobile): scan QR with camera, validate token, mark `checkedInAt`, show "already checked in" on reuse; manual search by name/phone as fallback
+- [x] Organiser dashboard: sales by tier, attendee list export (CSV), check-in count
+- [x] Event cancellation → refund all paid orders
+- [x] Emails: ticket confirmation (with ticket link), event reminder (day before)
+- [x] **Tests:** oversell protection under concurrency, QR reuse, hold expiry releases capacity
 
 **Acceptance:** 100 parallel purchases for a tier with 20 tickets never sell more than 20; QR check-in works on a phone in poor network (validate quickly, show clear result).
 
@@ -249,17 +249,17 @@ API (examples): `POST /businesses`, `POST /venues`, `PATCH /venues/:id`, `POST /
 
 Open games:
 
-- [ ] When booking, host can mark it as an open game: sport, skill level, spots needed, price per head
-- [ ] Public list `/[city]/games` (today/tomorrow, by sport) and game page showing host, venue, time, spots left
-- [ ] Join = pay your share (Razorpay); atomic spot reservation like tickets; host sees players
-- [ ] Rules: auto-close when full; if not full by cutoff, host chooses to keep or cancel (refund joiners)
-- [ ] Share link + click-to-chat "share on WhatsApp" button
+- [x] When booking, host can mark it as an open game: sport, skill level, spots needed, price per head
+- [x] Public list `/[city]/games` (today/tomorrow, by sport) and game page showing host, venue, time, spots left
+- [x] Join = pay your share (Razorpay); atomic spot reservation like tickets; host sees players
+- [x] Rules: auto-close when full; if not full by cutoff, host chooses to keep or cancel (refund joiners)
+- [x] Share link + click-to-chat "share on WhatsApp" button
 
 Group/split booking:
 
-- [ ] Organiser books and chooses "split payment": adds N shares (names/phones), gets a share link
-- [ ] Each friend opens the link and pays their share; organiser sees who has paid
-- [ ] Deadline: if unpaid shares remain, organiser pays the rest or booking is released (policy decided in code, clearly shown in UI)
+- [x] Organiser books and chooses "split payment": adds N shares (names/phones), gets a share link
+- [x] Each friend opens the link and pays their share; organiser sees who has paid
+- [x] Deadline: if unpaid shares remain, organiser pays the rest or booking is released (policy decided in code, clearly shown in UI)
 
 **Acceptance:** a host creates a 10-player game needing 4 more; 4 people join and pay; the game shows "full"; money and refunds reconcile correctly in owner earnings.
 
@@ -269,12 +269,12 @@ Group/split booking:
 
 **Goal:** recurring revenue for venues and clubs (pottery, painting, run clubs, coaching academies).
 
-- [ ] Membership plans per venue/business: name, duration (monthly/quarterly), price, benefits (e.g. X bookings/month, discount %, reserved recurring slot)
-- [ ] Coaching batches: sport/activity, coach name, schedule (days + time), capacity, monthly fee
-- [ ] Purchase and renewal via Razorpay (one-time payments with renewal reminders first; Razorpay Subscriptions later if needed)
-- [ ] Recurring reserved slots for batches create permanent locks on the calendar
-- [ ] Member list, attendance marking, expiry reminders (email + in-app)
-- [ ] Club pages with upcoming sessions (club sessions reuse the events model with `type: 'club_session'`)
+- [x] Membership plans per venue/business: name, duration (monthly/quarterly), price, benefits (e.g. X bookings/month, discount %, reserved recurring slot)
+- [x] Coaching batches: sport/activity, coach name, schedule (days + time), capacity, monthly fee
+- [x] Purchase and renewal via Razorpay (one-time payments with renewal reminders first; Razorpay Subscriptions later if needed)
+- [x] Recurring reserved slots for batches create permanent locks on the calendar
+- [x] Member list, attendance marking, expiry reminders (email + in-app)
+- [x] Club pages with upcoming sessions (club sessions reuse the events model with `type: 'club_session'`)
 
 **Acceptance:** a coaching batch at 6 pm Mon/Wed/Fri automatically blocks those slots; members renew and appear in the member list.
 

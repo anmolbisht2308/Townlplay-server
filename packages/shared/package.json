@@ -1,6 +1,6 @@
 {
   "name": "@townplay/shared",
-  "version": "0.2.0",
+  "version": "0.7.0",
   "description": "Shared Zod schemas, types, constants and money/time utils for Townplay (api + web).",
   "type": "module",
   "license": "UNLICENSED",

@@ -1,3 +1,4 @@
+import { parseConvenienceFeeConfig } from "@townplay/shared";
 import { z } from "zod";
 
 const optional = z
@@ -38,11 +39,38 @@ const envSchema = z
     /** OTP sends per 15 minutes per IP. */
     OTP_RATE_LIMIT_MAX: z.coerce.number().int().positive().default(10),
     SEED_ADMIN_EMAIL: optional.pipe(z.email().optional()),
+    /** "fake" simulates payments (dev/test); production must use "razorpay". */
+    PAYMENTS_PROVIDER: z.enum(["razorpay", "fake"]).default("fake"),
+    RAZORPAY_KEY_ID: optional,
+    RAZORPAY_KEY_SECRET: optional,
+    RAZORPAY_WEBHOOK_SECRET: optional,
+    /** "route" transfers advances to venues via Razorpay Route; "manual" shows an admin payouts report. */
+    PAYOUTS_MODE: z.enum(["route", "manual"]).default("manual"),
+    /** Default convenience fee until an admin saves one, e.g. "flat:1000" or "flat:500,percent:1.5". */
+    CONVENIENCE_FEE_CONFIG: optional,
+    VAPID_PUBLIC_KEY: optional,
+    VAPID_PRIVATE_KEY: optional,
+    VAPID_SUBJECT: z.string().default("mailto:support@townplay.local"),
   })
   .superRefine((env, ctx) => {
     if (env.NODE_ENV !== "production") return;
     if (!env.RESEND_API_KEY) {
       ctx.addIssue({ code: "custom", path: ["RESEND_API_KEY"], message: "required in production" });
+    }
+    if (env.PAYMENTS_PROVIDER !== "razorpay") {
+      ctx.addIssue({
+        code: "custom",
+        path: ["PAYMENTS_PROVIDER"],
+        message: "must be razorpay in production",
+      });
+    }
+    for (const key of [
+      "RAZORPAY_KEY_ID",
+      "RAZORPAY_KEY_SECRET",
+      "RAZORPAY_WEBHOOK_SECRET",
+    ] as const) {
+      if (!env[key])
+        ctx.addIssue({ code: "custom", path: [key], message: "required in production" });
     }
     if (Boolean(env.GOOGLE_CLIENT_ID) !== Boolean(env.GOOGLE_CLIENT_SECRET)) {
       ctx.addIssue({
@@ -55,9 +83,27 @@ const envSchema = z
 
 export type Env = z.infer<typeof envSchema> & { AUTH_URL: string };
 
+// Fails fast on a malformed fee config at boot.
+const feeConfig = z
+  .string()
+  .optional()
+  .superRefine((v, ctx) => {
+    try {
+      parseConvenienceFeeConfig(v);
+    } catch (err) {
+      ctx.addIssue({ code: "custom", message: (err as Error).message });
+    }
+  });
+
 /** Parses and validates env; throws a readable error listing every bad variable. */
 export function parseEnv(source: Record<string, string | undefined>): Env {
   const result = envSchema.safeParse(source);
+  const fee = feeConfig.safeParse(source.CONVENIENCE_FEE_CONFIG || undefined);
+  if (!fee.success) {
+    throw new Error(
+      `Invalid environment:\n  CONVENIENCE_FEE_CONFIG: ${fee.error.issues[0]?.message}`,
+    );
+  }
   if (!result.success) {
     const lines = result.error.issues.map((i) => `  ${i.path.join(".")}: ${i.message}`);
     throw new Error(`Invalid environment:\n${lines.join("\n")}`);

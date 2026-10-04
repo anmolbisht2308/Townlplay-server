@@ -1,4 +1,12 @@
-import type { Business, Photo, PublicVenue, Resource, Venue, VenueCard } from "@townplay/shared";
+import type {
+  Business,
+  PayoutInfo,
+  Photo,
+  PublicVenue,
+  Resource,
+  Venue,
+  VenueCard,
+} from "@townplay/shared";
 import type { BusinessRaw } from "../models/business.js";
 import type { ResourceRaw } from "../models/resource.js";
 import type { VenueRaw } from "../models/venue.js";
@@ -25,8 +33,26 @@ export function toBusiness(b: BusinessLike): Business {
     },
     status: b.status,
     reviewNote: b.reviewNote ?? null,
+    payout: toPayoutInfo(b),
     createdAt: b.createdAt.toISOString(),
   };
+}
+
+/** Payout setup without secrets (no full account number). */
+export function toPayoutInfo(b: BusinessLike, mode: "route" | "manual" = payoutsMode): PayoutInfo {
+  return {
+    mode,
+    status: b.payout?.status ?? "not_started",
+    accountHolderName: b.payout?.accountHolderName ?? null,
+    accountLast4: b.payout?.accountLast4 ?? null,
+    ifsc: b.payout?.ifsc ?? null,
+  };
+}
+
+let payoutsMode: "route" | "manual" = "manual";
+/** Set once at startup from PAYOUTS_MODE so DTOs report it. */
+export function setPayoutsMode(mode: "route" | "manual") {
+  payoutsMode = mode;
 }
 
 export function toVenue(v: VenueLike): Venue {

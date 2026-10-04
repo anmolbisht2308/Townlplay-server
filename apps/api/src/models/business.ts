@@ -15,8 +15,17 @@ const businessSchema = new Schema(
       gstin: { type: String },
     },
     payout: {
+      status: {
+        type: String,
+        enum: ["not_started", "pending", "active", "failed"],
+        default: "not_started",
+      },
       razorpayLinkedAccountId: { type: String },
-      status: { type: String, default: "not_started" },
+      accountHolderName: { type: String },
+      /** AES-GCM sealed with AUTH_SECRET (lib/crypto.ts); never sent to clients. */
+      accountNumberSealed: { type: String },
+      accountLast4: { type: String },
+      ifsc: { type: String },
     },
     status: { type: String, enum: BUSINESS_STATUSES, default: "draft", index: true },
     reviewNote: { type: String },

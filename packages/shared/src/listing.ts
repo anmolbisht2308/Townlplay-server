@@ -63,6 +63,13 @@ export const businessSchema = z.object({
   kyc: kycSchema.partial().extend({ legalName: z.string() }),
   status: z.enum(BUSINESS_STATUSES),
   reviewNote: z.string().nullable(),
+  payout: z.object({
+    mode: z.enum(["route", "manual"]),
+    status: z.enum(["not_started", "pending", "active", "failed"]),
+    accountHolderName: z.string().nullable(),
+    accountLast4: z.string().nullable(),
+    ifsc: z.string().nullable(),
+  }),
   createdAt: z.string(),
 });
 export type Business = z.infer<typeof businessSchema>;
@@ -268,12 +275,12 @@ export type SitemapEntry = z.infer<typeof sitemapEntrySchema>;
 
 export const reviewReasonSchema = z.object({ reason: z.string().trim().min(3).max(500) }).strict();
 export const reviewQueueQuerySchema = z.object({
-  kind: z.enum(["business", "venue"]).default("venue"),
+  kind: z.enum(["business", "venue", "event"]).default("venue"),
   status: z.string().default("pending_review"),
 });
 
 export const reviewQueueItemSchema = z.object({
-  kind: z.enum(["business", "venue"]),
+  kind: z.enum(["business", "venue", "event"]),
   id: z.string(),
   name: z.string(),
   status: z.string(),
