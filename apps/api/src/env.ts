@@ -96,7 +96,9 @@ const feeConfig = z
   });
 
 /** Parses and validates env; throws a readable error listing every bad variable. */
-export function parseEnv(source: Record<string, string | undefined>): Env {
+export function parseEnv(raw: Record<string, string | undefined>): Env {
+  // `KEY=` (empty, as copied from .env.example) means "not set": the default applies.
+  const source = Object.fromEntries(Object.entries(raw).filter(([, v]) => v !== ""));
   const result = envSchema.safeParse(source);
   const fee = feeConfig.safeParse(source.CONVENIENCE_FEE_CONFIG || undefined);
   if (!fee.success) {

@@ -35,6 +35,24 @@ describe("env", () => {
     expect(parseEnv(base).AUTH_URL).toBe("http://localhost:3000");
   });
 
+  it("treats empty values (as copied from .env.example) as unset", () => {
+    const env = parseEnv({
+      ...base,
+      RATE_LIMIT_MAX: "",
+      OTP_RATE_LIMIT_MAX: "",
+      EMAIL_FROM: "",
+      VAPID_SUBJECT: "",
+      AUTH_URL: "",
+    });
+    expect(env).toMatchObject({
+      RATE_LIMIT_MAX: 300,
+      OTP_RATE_LIMIT_MAX: 10,
+      EMAIL_FROM: "Townplay <no-reply@townplay.local>",
+      VAPID_SUBJECT: "mailto:support@townplay.local",
+      AUTH_URL: "http://localhost:3000",
+    });
+  });
+
   it("fails fast listing bad variables", () => {
     expect(() => parseEnv({ ...base, AUTH_SECRET: "short" })).toThrow(/AUTH_SECRET/);
     expect(() => parseEnv({ ...base, NODE_ENV: "production" })).toThrow(/RESEND_API_KEY/);
