@@ -13,6 +13,7 @@ export async function agent(ctx: Ctx, email: string) {
     get: (path: string) => as(request(ctx.app).get(path)),
     post: (path: string, body?: object) => as(request(ctx.app).post(path)).send(body ?? {}),
     patch: (path: string, body: object) => as(request(ctx.app).patch(path)).send(body),
+    put: (path: string, body: object) => as(request(ctx.app).put(path)).send(body),
     delete: (path: string) => as(request(ctx.app).delete(path)),
   };
 }
@@ -85,4 +86,63 @@ export async function liveVenue(ctx: Ctx, owner: Agent, over: Record<string, unk
   const admin = await adminAgent(ctx);
   await admin.post(`/v1/admin/venues/${ids.venueId}/approve`).expect(200);
   return ids;
+}
+
+/** Creates the order for a hold and pays it through the fake gateway (test mode). */
+export async function payHold(player: Agent, bookingId: string) {
+  const order = await player.post("/v1/payments/orders", { bookingId }).expect(201);
+  if (order.body.result) return order.body.result;
+  const paid = await player
+    .post("/v1/payments/fake-pay", { orderId: order.body.orderId })
+    .expect(200);
+  return paid.body;
+}
+
+/** Pays a held ticket order through the fake gateway. */
+export async function payTicketOrder(buyer: Agent, ticketOrderId: string) {
+  const order = await buyer.post("/v1/payments/orders", { ticketOrderId }).expect(201);
+  if (order.body.result) return order.body.result;
+  return (await buyer.post("/v1/payments/fake-pay", { orderId: order.body.orderId }).expect(200))
+    .body;
+}
+
+export function eventInput(businessId: string, over: Record<string, unknown> = {}) {
+  const startsAt = new Date(Date.now() + 5 * 86_400_000);
+  return {
+    businessId,
+    citySlug: "bareilly",
+    title: "Diwali Mela",
+    type: "seasonal",
+    description: "Food, music and fireworks.",
+    photos: [],
+    startsAt: startsAt.toISOString(),
+    endsAt: new Date(startsAt.getTime() + 5 * 3_600_000).toISOString(),
+    venueId: null,
+    address: "Company Garden, Bareilly",
+    location: { lat: 28.36, lng: 79.41 },
+    ageLimit: null,
+    tiers: [
+      { name: "Entry", pricePaise: 20000, capacity: 20 },
+      { name: "Free pass", pricePaise: 0, capacity: 5 },
+    ],
+    ...over,
+  };
+}
+
+/** A published event (business created, event submitted and approved). */
+export async function liveEvent(ctx: Ctx, owner: Agent, over: Record<string, unknown> = {}) {
+  const business = await owner
+    .post("/v1/businesses", businessInput({ type: "event_organizer" }))
+    .expect(201);
+  const event = await owner.post("/v1/events", eventInput(business.body.id, over)).expect(201);
+  await owner.post(`/v1/events/${event.body.id}/submit`).expect(200);
+  const admin = await adminAgent(ctx);
+  const approved = await admin.post(`/v1/admin/events/${event.body.id}/approve`).expect(200);
+  return {
+    businessId: business.body.id as string,
+    eventId: event.body.id as string,
+    slug: approved.body.slug as string,
+    paidTierId: approved.body.tiers[0].id as string,
+    freeTierId: approved.body.tiers[1].id as string,
+  };
 }

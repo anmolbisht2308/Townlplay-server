@@ -51,3 +51,14 @@ export function requireRole(...roles: Role[]): RequestHandler {
     next();
   };
 }
+
+/** Sets `req.user` when a valid session cookie is present; never rejects. */
+export function optionalAuth(auth: Auth): RequestHandler {
+  return async (req, _res, next) => {
+    const session = await auth.api
+      .getSession({ headers: fromNodeHeaders(req.headers) })
+      .catch(() => null);
+    if (session) req.user = toAuthUser(session.user);
+    next();
+  };
+}

@@ -6,6 +6,11 @@ import { createAuth } from "../src/auth/auth.js";
 import { connectMongo, mongoDb } from "../src/db.js";
 import { parseEnv } from "../src/env.js";
 import { createLogger } from "../src/logger.js";
+import type { Auth } from "../src/auth/auth.js";
+import { createServices, type Services } from "../src/services/index.js";
+import { FakeGateway } from "../src/services/paymentGateway.js";
+import { RecordingPushSender } from "../src/services/push.js";
+import { parseCloudinaryUrl } from "../src/services/uploads.js";
 import type { EmailMessage, EmailSender } from "../src/services/email.js";
 
 export const WEB_ORIGIN = "http://localhost:3000";
@@ -37,10 +42,25 @@ export class RecordingEmailSender implements EmailSender {
 export function setupApp(overrides: Partial<typeof testEnv> = {}) {
   const env = { ...testEnv, ...overrides };
   const email = new RecordingEmailSender();
+  const gateway = new FakeGateway();
+  const push = new RecordingPushSender();
   const ctx = {
     env,
     email,
+    gateway,
+    push,
+    /** Shift the booking service's clock (ms) to test expiry and past slots. */
+    clock: { offsetMs: 0 },
     app: undefined as unknown as ReturnType<typeof createApp>,
+    auth: undefined as unknown as Auth,
+    services: undefined as unknown as Services,
+    /** Shortcuts into ctx.services. */
+    get bookings() {
+      return this.services.bookings;
+    },
+    get events() {
+      return this.services.events;
+    },
   };
 
   beforeAll(async () => {
@@ -53,13 +73,29 @@ export function setupApp(overrides: Partial<typeof testEnv> = {}) {
       email,
       logger,
     });
-    ctx.app = createApp({ env, logger, auth });
+    ctx.auth = auth;
+    ctx.services = createServices({
+      env,
+      logger,
+      email,
+      push,
+      gateway,
+      ...(env.CLOUDINARY_URL ? { cloudinary: parseCloudinaryUrl(env.CLOUDINARY_URL) } : {}),
+      now: () => new Date(Date.now() + ctx.clock.offsetMs),
+    });
+    ctx.app = createApp({ env, logger, auth, services: ctx.services });
     // Geo ($geoNear) and $text queries need their indexes before the first test.
     await Promise.all(mongoose.modelNames().map((name) => mongoose.model(name).init()));
   });
 
   beforeEach(async () => {
+    ctx.clock.offsetMs = 0;
     email.sent.length = 0;
+    push.sent.length = 0;
+    gateway.orders.length = 0;
+    gateway.refunds.length = 0;
+    gateway.transfers.length = 0;
+    gateway.reversals.length = 0;
     email.codes.clear();
     const collections = await mongoDb().collections();
     await Promise.all(collections.map((c) => c.deleteMany({})));

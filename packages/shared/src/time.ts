@@ -67,3 +67,14 @@ export function minutesToTime(minutes: number): string {
   }
   return `${pad(Math.floor(minutes / 60))}:${pad(minutes % 60)}`;
 }
+
+/** Adds calendar months to an IST date string; the day is clamped to the month's length. */
+export function addMonths(date: string, months: number): string {
+  if (!isDateString(date)) throw new RangeError(`invalid date: ${date}`);
+  const [y, m, d] = date.split("-").map(Number) as [number, number, number];
+  const index = y * 12 + (m - 1) + months;
+  const year = Math.floor(index / 12);
+  const month = (index % 12) + 1;
+  const last = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  return `${year}-${pad(month)}-${pad(Math.min(d, last))}`;
+}

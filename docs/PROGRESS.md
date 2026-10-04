@@ -1,6 +1,5 @@
 # Progress
 
-- Done: Phase 0 (foundations) and Phase 1 (businesses, venues, courts, admin review, public listing + near me, venue by slug, sitemap entries, Cloudinary signed uploads). shared 0.2.0.
-- Next: Phase 2: slot engine, holds with `slotLocks`, owner calendar.
-- Gotchas: mongod download is blocked in cloud sessions, so DB tests run in CI. `mongodb` must match mongoose's (~7.6). Mongoose 9: use `QueryFilter<T>` and `InstanceType<typeof Model>` for doc types.
-- Uploads need `CLOUDINARY_URL`; without it `/v1/uploads/sign` returns 503 UPLOADS_DISABLED.
+- Done: Phases 0–6. Phase 6: membership plans (discount % + monthly cap on online holds), coaching batches (court slots reserved as `source: batch` bookings via insertWithLocks, 28 days ahead, hourly top-up), memberships (pay via `refType: membership`, atomic batch seats, 6-parallel test, renewals inherit the seat), attendance, expiry reminders, owner cancel = full refund, membership fees in earnings. shared 0.7.0.
+- Next: Phase 7 (admin, reviews, analytics, launch readiness).
+- Gotchas: DB tests for Phases 2–6 have never run (mongod blocked in cloud sessions) → run `pnpm test` / check CI first after committing and fix red.
