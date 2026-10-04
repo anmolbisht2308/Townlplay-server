@@ -3,6 +3,7 @@ import { SEED_CITIES } from "@townplay/shared";
 import mongoose from "mongoose";
 import { pino } from "pino";
 import { connectMongo } from "../db.js";
+import { isMain } from "../lib/isMain.js";
 import { parseEnv } from "../env.js";
 import { CityModel } from "../models/city.js";
 import { UserModel } from "../models/user.js";
@@ -35,7 +36,7 @@ export async function seed(adminEmail: string | undefined): Promise<void> {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (isMain(import.meta.url)) {
   const env = parseEnv(process.env);
   const log = pino();
   await connectMongo(env.MONGODB_URI);

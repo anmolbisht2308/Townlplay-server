@@ -24,6 +24,7 @@ import {
 import mongoose from "mongoose";
 import { pino, type Logger } from "pino";
 import { connectMongo } from "../db.js";
+import { isMain } from "../lib/isMain.js";
 import { parseEnv, type Env } from "../env.js";
 import type { AuthUser } from "../middleware/auth.js";
 import { AttendanceModel } from "../models/attendance.js";
@@ -596,7 +597,7 @@ export function demoServices(env: Env, logger: Logger): Services {
   });
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (isMain(import.meta.url)) {
   const env = parseEnv(process.env);
   const logger = pino({ level: "warn" });
   const emailBase = process.env.DEMO_EMAIL || undefined;
