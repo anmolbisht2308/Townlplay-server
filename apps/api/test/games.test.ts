@@ -130,14 +130,18 @@ describe("open games", () => {
       })
       .expect(201);
     const a = await agent(ctx, "a@example.com");
-    await a.post(`/v1/games/${game.body.id}/join`, { name: "A", phone: "9123456780" }).expect(201);
+    await a
+      .post(`/v1/games/${game.body.id}/join`, { name: "Anil", phone: "9123456780" })
+      .expect(201);
     const b = await agent(ctx, "b@example.com");
-    await b.post(`/v1/games/${game.body.id}/join`, { name: "B", phone: "9123456781" }).expect(409);
+    await b
+      .post(`/v1/games/${game.body.id}/join`, { name: "Bina", phone: "9123456781" })
+      .expect(409);
 
     ctx.clock.offsetMs = 11 * 60_000;
     expect(await ctx.services.shares.expireHolds()).toBe(1);
     const bJoin = await b
-      .post(`/v1/games/${game.body.id}/join`, { name: "B", phone: "9123456781" })
+      .post(`/v1/games/${game.body.id}/join`, { name: "Bina", phone: "9123456781" })
       .expect(201);
     await paySpot(b, bJoin.body.myShare.id);
     await b.post(`/v1/games/${game.body.id}/leave`).expect(200);
@@ -156,7 +160,7 @@ describe("open games", () => {
       .expect(201);
     const p = await agent(ctx, "p@example.com");
     const joined = await p
-      .post(`/v1/games/${game.body.id}/join`, { name: "P", phone: "9123456780" })
+      .post(`/v1/games/${game.body.id}/join`, { name: "Pooja", phone: "9123456780" })
       .expect(201);
     await paySpot(p, joined.body.myShare.id);
     const stranger = await agent(ctx, "s@example.com");
@@ -178,9 +182,13 @@ describe("open games", () => {
       })
       .expect(201);
     const p = await agent(ctx, "p@example.com");
-    await p.post(`/v1/games/${game.body.id}/join`, { name: "P", phone: "9123456780" }).expect(201);
+    await p
+      .post(`/v1/games/${game.body.id}/join`, { name: "Pooja", phone: "9123456780" })
+      .expect(201);
     ctx.clock.offsetMs = Date.parse(game.body.joinCutoffAt) - Date.now() + 60_000;
-    await p.post(`/v1/games/${game.body.id}/join`, { name: "P", phone: "9123456780" }).expect(409);
+    await p
+      .post(`/v1/games/${game.body.id}/join`, { name: "Pooja", phone: "9123456780" })
+      .expect(409);
     await ctx.services.shares.cutoffs();
     await ctx.services.shares.cutoffs();
     expect(
@@ -228,7 +236,7 @@ describe("split payments", () => {
       booking.amount.balancePaise - split.body.shares[0].amountPaise,
     );
     await host
-      .post(`/v1/bookings/${booking.id}/split`, { shares: [{ name: "X" }, { name: "Y" }] })
+      .post(`/v1/bookings/${booking.id}/split`, { shares: [{ name: "Xavier" }, { name: "Yash" }] })
       .expect(409);
 
     // Earnings reconcile: the share counts as collected online, the venue collects only the rest.
