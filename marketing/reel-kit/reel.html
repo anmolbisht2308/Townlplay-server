@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url(bricolage.woff2) format("woff2");font-weight:200 800}
+@font-face{font-family:Inter;src:url(inter.woff2) format("woff2");font-weight:100 900}
+*{box-sizing:border-box}
+:root{--ink:#12161f;--green:#0f9d4c;--lime:#d9f53b;--muted:#c9d1cc}
+body{margin:0;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;background:var(--ink);color:#fff;position:relative}
+.h{font-family:"Bricolage Grotesque";font-weight:800;letter-spacing:-2px;line-height:1.05}
+.mk{color:var(--ink);background:var(--lime);border-radius:14px;padding:0 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.glow{position:absolute;border-radius:50%;pointer-events:none}
+.layer{position:absolute;inset:0}
+/* caption band (chat) */
+#cap{position:absolute;left:0;right:0;top:0;height:330px;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 60px;z-index:5}
+#cap div{font-family:"Bricolage Grotesque";font-weight:800;font-size:74px;letter-spacing:-2px;line-height:1.06}
+/* chat */
+.chatbg{background:#0b141a}
+#hdr{position:absolute;left:0;right:0;top:330px;height:150px;background:#1f2c34;display:flex;align-items:center;gap:26px;padding:0 36px;z-index:4}
+.av{width:96px;height:96px;border-radius:50%;background:var(--green);display:grid;place-items:center;font-size:52px;flex:none}
+#chat{position:absolute;left:0;right:0;top:480px;height:1080px;overflow:hidden;background:#0b141a}
+#list{position:absolute;left:0;right:0;top:0;padding:24px 34px 40px}
+.m{display:flex;margin-top:18px}
+.m.out{justify-content:flex-end}
+.b{max-width:880px;padding:20px 30px 16px;border-radius:28px;font-size:52px;line-height:1.26;background:#202c33;color:#e9edef}
+.m.in .b{border-top-left-radius:6px}
+.m.out .b{background:#005c4b;border-top-right-radius:6px}
+.n{font-size:36px;font-weight:700;margin-bottom:4px}
+.t{font-size:27px;color:#8696a0;text-align:right;margin-top:4px}
+.chip{display:flex;justify-content:center;margin:28px 0 8px}
+.chip span{background:#1f2c34;color:#c5ced3;font-size:32px;font-weight:600;padding:10px 26px;border-radius:16px}
+.typing{display:inline-flex;gap:10px;padding:26px 30px}
+.typing i{width:18px;height:18px;border-radius:50%;background:#8696a0;display:block}
+#bar{position:absolute;left:0;right:0;top:1560px;height:130px;display:flex;align-items:center;gap:20px;padding:0 30px}
+#bar .in{flex:1;height:96px;border-radius:48px;background:#1f2c34;color:#8696a0;font-size:38px;display:flex;align-items:center;padding:0 40px}
+#bar .mic{width:96px;height:96px;border-radius:50%;background:#00a884;display:grid;place-items:center;font-size:44px}
+/* cards */
+.card{border-radius:48px;background:linear-gradient(160deg,#1e2633,#161c27);border:3px solid rgba(255,255,255,.1);box-shadow:0 40px 100px rgba(0,0,0,.45)}
+.pill{display:inline-block;font-weight:800;border-radius:999px}
+.row{display:flex;align-items:center;gap:30px;padding:36px 40px;border-radius:36px;margin-top:28px}
+.row .e{font-size:76px;flex:none;width:100px;text-align:center}
+.row .x{font-size:52px;font-weight:700;line-height:1.25}
+/* end card */
+#end{position:absolute;inset:0;background:rgba(11,16,24,.96);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px;opacity:0}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const $=(s,r=document)=>r.querySelector(s);
+const cl=v=>Math.max(0,Math.min(1,v)),p=(t,a,d)=>cl((t-a)/d),out=x=>1-Math.pow(1-x,3);
+const back=x=>{const c1=1.6,c3=c1+1;return x<=0?0:1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+// reading time: slow enough for a first-time viewer on a phone
+const rt=(s,min=1.4,max=2.8)=>Math.max(min,Math.min(max,0.7+String(s||'').replace(/<[^>]+>/g,'').length/18));
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const hl=(text,mark)=>{const e=esc(text);if(!mark)return e;const m=esc(mark);return e.replace(m,`<span class="mk">${m}</span>`)};
+const BOLT='<svg width="62" height="62" viewBox="0 0 24 24" fill="#d9f53b" stroke="#d9f53b" stroke-width="1" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>';
+const NAMECOL=['#53bdeb','#ff72a1','#ffd279','#a5b337','#fc9775','#c58af9','#7ee0c3'];
+
+function glows(){return `<div class="glow" id="g1" style="width:1100px;height:1100px;left:-380px;top:-420px;background:radial-gradient(circle,rgba(15,157,76,.7),transparent 65%)"></div><div class="glow" id="g2" style="width:1000px;height:1000px;right:-400px;bottom:-380px;background:radial-gradient(circle,rgba(217,245,59,.25),transparent 65%)"></div>`}
+function moveGlows(t){const a=$('#g1'),b=$('#g2');if(a)a.style.transform=`translate(${Math.sin(t*.6)*60}px,${Math.cos(t*.5)*50}px)`;if(b)b.style.transform=`translate(${Math.cos(t*.55)*70}px,${Math.sin(t*.45)*60}px)`}
+function show(el,k,dy=50,sc=false){if(!el)return;el.style.opacity=k<=0?0:Math.min(1,k*1.5);el.style.transform=sc?`scale(${0.5+0.5*back(k)})`:`translateY(${(1-out(k))*dy}px)`}
+
+function endHTML(e){
+  return `<div id="end">
+    <div class="h" style="font-size:${e.size||110}px">${hl(e.title,e.highlight)}</div>
+    ${e.sub?`<div style="font-size:50px;color:var(--muted);font-weight:600;margin-top:44px;line-height:1.3">${esc(e.sub)}</div>`:''}
+    ${e.tag?`<div class="h" style="font-size:76px;margin-top:60px;letter-spacing:-1px">${esc(e.tag)}</div>`:''}
+    <div style="margin-top:110px;display:flex;align-items:center;gap:22px">
+      <div style="width:100px;height:100px;border-radius:28px;background:var(--green);display:grid;place-items:center">${BOLT}</div>
+      <div style="text-align:left"><div class="h" style="font-size:60px;letter-spacing:-1px">TownPlay</div><div style="font-size:32px;color:var(--muted);font-weight:600;margin-top:4px">${esc(e.brandLine||'Book · play · split the bill')}</div></div>
+    </div>
+    ${e.cta?`<div class="pill" style="margin-top:56px;background:var(--lime);color:var(--ink);font-size:46px;padding:22px 42px">${esc(e.cta)}</div>`:''}
+  </div>`}
+function animEnd(t,at){const en=$('#end');const k=p(t,at,0.45);en.style.opacity=k;en.firstElementChild.style.transform=`scale(${0.85+0.15*back(k)})`;const c=en.querySelector('.pill');if(c&&t>at+1)c.style.transform=`scale(${1+0.04*Math.sin((t-at-1)*6)})`}
+
+/* ---------- chat ---------- */
+function buildChat(S){
+  const root=$('#root');document.body.classList.add('chatbg');
+  root.innerHTML=`<div id="cap"><div>${hl(S.caption,S.captionMark)}</div></div>
+  <div id="hdr"><div style="font-size:56px;color:#aebac1">‹</div><div class="av">${S.avatar||'⚽'}</div>
+   <div style="flex:1;min-width:0"><div style="font-size:44px;font-weight:700">${esc(S.group)}</div><div id="sub" style="font-size:30px;color:#8696a0;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(S.members)}</div></div>
+   <div style="font-size:44px;color:#aebac1;letter-spacing:20px">📹📞</div></div>
+  <div id="chat"><div id="list"></div></div>
+  <div id="bar"><div class="in">😊 &nbsp;Message</div><div class="mic">🎤</div></div>${endHTML(S.end)}`;
+  const names=[...new Set(S.messages.filter(m=>m.from&&m.from!=='You').map(m=>m.from))];
+  const col=n=>NAMECOL[names.indexOf(n)%NAMECOL.length];
+  let t=0;const items=[],events=[];
+  S.messages.forEach((m,i)=>{const e=document.createElement('div');
+    if(m.chip){e.className='chip';e.innerHTML=`<span>${esc(m.chip)}</span>`;items.push({e,at:t});t+=1.0;}
+    else if(m.typing){e.className='m in';e.innerHTML=`<div class="b"><div class="n" style="color:${col(m.typing)}">${esc(m.typing)}</div><div class="typing"><i></i><i></i><i></i></div></div>`;items.push({e,at:t,until:t+1.3,typing:m.typing});t+=1.3;}
+    else{const outm=m.from==='You';e.className='m '+(outm?'out':'in');e.innerHTML=`<div class="b">${outm?'':`<div class="n" style="color:${col(m.from)}">${esc(m.from)}</div>`}<div>${esc(m.text)}</div><div class="t">${esc(m.time||'')}${outm?' <span style="color:#53bdeb">✓✓</span>':''}</div></div>`;items.push({e,at:t});events.push({t,kind:outm?'out':'in'});t+=rt(m.text);}
+    $('#list').appendChild(e)});
+  const endAt=t+0.4, dur=endAt+3.2;
+  events.push({t:endAt,kind:'whoosh'});
+  const stops=[...new Set(items.map(x=>x.at).concat(items.filter(x=>x.until).map(x=>x.until)))].sort((a,b)=>a-b);
+  const vis=(x,tt)=>tt>=x.at&&!(x.until&&tt>=x.until);
+  function bottomAt(tt){let y=24,last=0;items.forEach(x=>{if(!vis(x,tt))return;x.e.style.display='';y+=parseFloat(getComputedStyle(x.e).marginTop)+x.e.offsetHeight;last=y});return last+40}
+  const targets=stops.map(s=>{items.forEach(x=>x.e.style.display=vis(x,s+0.001)?'':'none');return Math.max(0,bottomAt(s+0.001)-1080)});
+  return {dur,events,render(tt){
+    items.forEach(x=>{const v=vis(x,tt);x.e.style.display=v?'':'none';if(!v)return;const k=x.at===0?1:p(tt,x.at,0.25);x.e.style.opacity=Math.min(1,k*1.6);x.e.style.transform=`translateY(${(1-out(k))*30}px) scale(${0.9+0.1*back(k)})`;x.e.style.transformOrigin=x.e.classList.contains('out')?'right bottom':'left bottom';
+      if(x.typing)x.e.querySelectorAll('i').forEach((d,j)=>{d.style.transform=`translateY(${Math.sin(tt*9-j*.9)*-7}px)`})});
+    let prev=0,cur=0;stops.forEach((s,i)=>{if(s>tt)return;const k=out(p(tt,s,0.3));cur=prev+(targets[i]-prev)*k;prev=targets[i]});
+    $('#list').style.transform=`translateY(${-cur}px)`;
+    const ty=items.find(x=>x.typing&&tt>=x.at&&tt<x.until);$('#sub').textContent=ty?`${ty.typing} is typing…`:S.members;
+    animEnd(tt,endAt)}};
+}
+
+/* ---------- list: "types of ..." ---------- */
+function buildList(S){
+  const root=$('#root');
+  root.innerHTML=glows()+`<div id="head" style="position:absolute;left:70px;right:70px;top:220px;text-align:center"><div class="h" style="font-size:${S.titleSize||90}px">${hl(S.title,S.titleMark)}</div></div>
+  <div id="cards"></div><div id="dots" style="position:absolute;left:0;right:0;top:1500px;display:flex;justify-content:center;gap:16px"></div>${endHTML(S.end)}`;
+  let t=0;const cards=[],events=[];
+  S.items.forEach((it,i)=>{const c=document.createElement('div');c.className='card';c.style.cssText='position:absolute;left:70px;right:70px;top:640px;min-height:720px;padding:70px 60px;opacity:0';
+    c.innerHTML=`<div class="pill" style="position:absolute;top:-46px;left:60px;background:var(--lime);color:var(--ink);font-family:'Bricolage Grotesque';font-size:64px;padding:8px 34px">#${i+1}</div>
+    <div style="width:240px;height:240px;border-radius:50%;background:rgba(15,157,76,.25);border:4px solid rgba(15,157,76,.6);display:grid;place-items:center;font-size:130px;margin:20px auto 0" class="emo">${it.emoji}</div>
+    <div class="h" style="font-size:80px;text-align:center;margin-top:56px;letter-spacing:-2px">${esc(it.title)}</div>
+    <div class="sub" style="font-size:48px;color:var(--muted);text-align:center;margin-top:34px;font-weight:600;line-height:1.3">${esc(it.sub||'')}</div>`;
+    $('#cards').appendChild(c);const d=document.createElement('div');d.style.cssText='width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.22)';$('#dots').appendChild(d);
+    const len=Math.max(2.8,Math.min(4.2,rt(it.title)*0.8+rt(it.sub)*0.8+0.3));cards.push({c,d,at:t,len});events.push({t,kind:'tick'});t+=len});
+  const endAt=t, dur=t+3.2;events.push({t:endAt,kind:'whoosh'});
+  return {dur,events,render(tt){moveGlows(tt);
+    $('#head').style.opacity=1-p(tt,endAt-0.1,0.25);$('#dots').style.opacity=$('#head').style.opacity;
+    cards.forEach((x,i)=>{const kin=i===0?1:p(tt,x.at,0.35),kout=p(tt,x.at+x.len-0.25,0.25);
+      if((tt<x.at&&i>0)||kout>=1){x.c.style.opacity=0}else{x.c.style.opacity=Math.min(1,kin*2)*(1-kout);x.c.style.transform=`translateX(${-out(kout)*900}px) rotate(${(i===0?0:(1-out(kin))*(i%2?5:-5))-kout*8}deg) scale(${i===0?1:0.5+0.5*back(kin)})`;
+        show(x.c.querySelector('.sub'),i===0&&tt<0.01?1:p(tt,x.at+0.9,0.4),20);x.c.querySelector('.emo').style.transform=`rotate(${Math.sin((tt-x.at)*5)*6}deg)`}
+      const on=tt>=x.at&&tt<x.at+x.len;x.d.style.background=on?'#d9f53b':(tt>=x.at+x.len?'rgba(217,245,59,.45)':'rgba(255,255,255,.22)');x.d.style.transform=on?'scale(1.3)':'none'});
+    animEnd(tt,endAt)}};
+}
+
+/* ---------- versus: expectation vs reality / before vs after ---------- */
+function buildVersus(S){
+  const root=$('#root');
+  const panel=(side,id,bg)=>`<div id="${id}" class="card" style="padding:48px 54px;${bg}">
+     <div class="pill" style="font-size:46px;padding:14px 34px;${side.pill}">${esc(side.label)}</div>
+     ${side.lines.map(l=>`<div class="ln" style="font-size:56px;font-weight:700;margin-top:30px;line-height:1.25">${esc(l)}</div>`).join('')}</div>`;
+  root.innerHTML=glows()+`<div id="head" style="position:absolute;left:70px;right:70px;top:230px;text-align:center"><div class="h" style="font-size:${S.titleSize||96}px">${hl(S.title,S.titleMark)}</div></div>
+   <div style="position:absolute;left:60px;right:60px;top:${S.title.length>24?560:470}px;display:flex;flex-direction:column;gap:44px">${panel({...S.left,pill:'background:rgba(255,255,255,.12);color:#fff'},'L','')}
+   ${panel({...S.right,pill:'background:var(--lime);color:var(--ink)'},'R','border-color:rgba(217,245,59,.5)')}</div>${endHTML(S.end)}`;
+  let t=0.2;const steps=[],events=[];
+  const L=$('#L'),R=$('#R');
+  steps.push({el:L,at:0,kind:'panel'});
+  [...L.querySelectorAll('.ln')].forEach(el=>{t+=0.5;steps.push({el,at:t});events.push({t,kind:'tick'});t+=rt(el.textContent)-0.4});
+  t+=0.6;steps.push({el:R,at:t,kind:'panel'});events.push({t,kind:'whoosh'});
+  [...R.querySelectorAll('.ln')].forEach(el=>{t+=0.6;steps.push({el,at:t});events.push({t,kind:'tick'});t+=rt(el.textContent)-0.3});
+  const endAt=t+1.0,dur=endAt+3.2;events.push({t:endAt,kind:'whoosh'});
+  return {dur,events,render(tt){moveGlows(tt);
+    steps.forEach(s=>{const k=s.at===0?1:p(tt,s.at,0.35);s.kind==='panel'?show(s.el,k,0,true):show(s.el,k,24)});
+    animEnd(tt,endAt)}};
+}
+
+/* ---------- pitch: problem -> TownPlay fix (owners) ---------- */
+function buildPitch(S){
+  const root=$('#root');
+  root.innerHTML=glows()+`
+  <div id="A" class="layer"><div style="position:absolute;left:70px;right:70px;top:400px">
+    <div class="pill" id="kick" style="background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);font-size:40px;padding:14px 30px;font-weight:700">${esc(S.kicker)}</div>
+    <div class="h" id="hook" style="font-size:${S.hookSize||112}px;margin-top:44px">${hl(S.hook,S.hookMark)}</div>
+    <div id="probs" style="margin-top:50px">${S.problems.map(x=>`<div class="row pr" style="background:rgba(255,90,79,.12);border:2px solid rgba(255,90,79,.35)"><div class="e">${x.emoji}</div><div class="x">${esc(x.text)}</div></div>`).join('')}</div>
+  </div></div>
+  <div id="B" class="layer" style="opacity:0"><div style="position:absolute;left:70px;right:70px;top:400px">
+    <div style="display:flex;align-items:center;gap:22px"><div style="width:110px;height:110px;border-radius:30px;background:var(--green);display:grid;place-items:center">${BOLT}</div><div class="h" style="font-size:80px">TownPlay</div></div>
+    <div class="h" id="sol" style="font-size:104px;margin-top:44px">${hl(S.solution,S.solutionMark)}</div>
+    <div style="margin-top:44px">${S.features.map(x=>`<div class="row ft" style="background:rgba(15,157,76,.16);border:2px solid rgba(15,157,76,.5)"><div class="e">${x.emoji}</div><div class="x">${esc(x.text)}</div></div>`).join('')}</div>
+  </div></div>${endHTML(S.end)}`;
+  let t=0;const steps=[{el:$('#kick'),at:0},{el:$('#hook'),at:0}],events=[];
+  t=rt(S.hook,2.0,2.8);
+  [...document.querySelectorAll('.pr')].forEach(el=>{steps.push({el,at:t});events.push({t,kind:'tick'});t+=rt(el.textContent,1.8,3)});
+  const bAt=t+0.6;events.push({t:bAt,kind:'whoosh'});t=bAt+rt(S.solution,1.8,2.8);
+  [...document.querySelectorAll('.ft')].forEach(el=>{steps.push({el,at:t});events.push({t,kind:'tick'});t+=rt(el.textContent,1.8,3)});
+  const endAt=t+0.8,dur=endAt+3.4;events.push({t:endAt,kind:'whoosh'});
+  return {dur,events,render(tt){moveGlows(tt);
+    const a=1-p(tt,bAt-0.3,0.3);$('#A').style.opacity=a;const b=p(tt,bAt,0.35);$('#B').style.opacity=b;$('#B').style.transform=`translateY(${(1-out(b))*60}px)`;
+    show($('#sol'),p(tt,bAt+0.2,0.4),30);
+    steps.forEach(s=>show(s.el,s.at===0?1:p(tt,s.at,0.35),30));
+    animEnd(tt,endAt)}};
+}
+
+window.init=function(spec){
+  const b={chat:buildChat,list:buildList,versus:buildVersus,pitch:buildPitch}[spec.type];
+  if(!b)throw new Error('unknown type '+spec.type);
+  const r=b(spec);window.render=r.render;r.render(0);
+  return {duration:+r.dur.toFixed(2),events:r.events.map(e=>({t:+e.t.toFixed(3),kind:e.kind}))};
+};
+</script>
+</body>
+</html>

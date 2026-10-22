@@ -1,0 +1,1492 @@
+{
+  "account": "@_town_play",
+  "metricoolBrandId": 7428293,
+  "postTimeIST": "11:00",
+  "entries": [
+    {
+      "id": "d01",
+      "date": "2026-10-23",
+      "weekday": "Fri",
+      "audience": "players",
+      "format": "chat",
+      "topic": "Open games: last-minute drop-outs",
+      "spec": {
+        "type": "chat",
+        "caption": "“Aaj 8 baje game hai” 💀",
+        "captionMark": "8 baje",
+        "group": "Friday Football ⚽",
+        "avatar": "⚽",
+        "members": "Rahul, Aman, Kabir, Sneha, Vikas +5, You",
+        "messages": [
+          {
+            "from": "Rahul",
+            "text": "Aaj 8 baje game hai, 10 log chahiye ⚽",
+            "time": "5:02 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Main aa raha 🔥",
+            "time": "5:03 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Pakka 💯",
+            "time": "5:03 PM"
+          },
+          {
+            "chip": "7:30 PM"
+          },
+          {
+            "from": "Vikas",
+            "text": "Bhai aaj nahi ho payega 🥲",
+            "time": "7:31 PM"
+          },
+          {
+            "from": "Sneha",
+            "text": "Mera bhai bhi nahi aa raha 😅",
+            "time": "7:32 PM"
+          },
+          {
+            "from": "You",
+            "text": "Ab sirf 8 bache 💀",
+            "time": "7:33 PM"
+          },
+          {
+            "typing": "Rahul"
+          },
+          {
+            "from": "Rahul",
+            "text": "Kisi ka office wala dost? Koi bhi chalega 😭",
+            "time": "7:34 PM"
+          }
+        ],
+        "end": {
+          "title": "2 log kam, game cancel 😭",
+          "highlight": "game cancel",
+          "tag": "Tag your last-minute dropper 👇",
+          "brandLine": "Open games · find players nearby"
+        }
+      },
+      "caption": "2 log kam, game cancel 😭⚽\n\nEvery squad has someone who drops out at 7:30 for an 8 PM game 💀\nTag them 👇\n\n#FootballMemes #FriendsMemes #DesiMemes #SportsIndia #RelatableReels",
+      "firstComment": "Vikas har group mein hota hai 🥲 Tag yours 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d02",
+      "date": "2026-10-24",
+      "weekday": "Sat",
+      "audience": "players",
+      "format": "list",
+      "topic": "Badminton doubles types",
+      "spec": {
+        "type": "list",
+        "title": "Every badminton doubles match has these 5 people 🏸",
+        "titleMark": "5 people",
+        "items": [
+          {
+            "emoji": "💥",
+            "title": "“Smash hi maarunga”",
+            "sub": "…net mein, har baar"
+          },
+          {
+            "emoji": "🙋",
+            "title": "“Mera tha!”",
+            "sub": "…partner ke saamne se le gaya"
+          },
+          {
+            "emoji": "📏",
+            "title": "“Line pe tha bhai”",
+            "sub": "…every single point"
+          },
+          {
+            "emoji": "🥵",
+            "title": "“Bas 1 game aur”",
+            "sub": "…5 games pehle bola tha"
+          },
+          {
+            "emoji": "🏸",
+            "title": "Naya racket, wahi game",
+            "sub": "…₹6,000 ka racket, same smash"
+          }
+        ],
+        "end": {
+          "title": "Which one are you?",
+          "highlight": "you?",
+          "tag": "Comment your number 👇",
+          "brandLine": "Book courts · find doubles partners"
+        }
+      },
+      "caption": "Every badminton doubles match has these 5 people 🏸😂\n\nWhich number are you? Comment below 👇\n\n#BadmintonMemes #BadmintonIndia #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "Main #3 hoon, line pe hi tha 😤 Tum? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d03",
+      "date": "2026-10-25",
+      "weekday": "Sun",
+      "audience": "owners",
+      "format": "pitch",
+      "topic": "Owners: booking calls all day",
+      "spec": {
+        "type": "pitch",
+        "kicker": "For turf & court owners",
+        "hook": "Raat 11 baje bhi phone baj raha hai? 📞",
+        "hookMark": "phone",
+        "problems": [
+          {
+            "emoji": "📞",
+            "text": "“Bhaiya kal 7 baje free hai?” all day"
+          },
+          {
+            "emoji": "📒",
+            "text": "Bookings in a register and WhatsApp"
+          },
+          {
+            "emoji": "🚫",
+            "text": "Slot booked, team never came"
+          }
+        ],
+        "solution": "Bookings on autopilot",
+        "solutionMark": "autopilot",
+        "features": [
+          {
+            "emoji": "📅",
+            "text": "Live calendar: players book slots themselves"
+          },
+          {
+            "emoji": "💸",
+            "text": "Advance paid online before the game"
+          },
+          {
+            "emoji": "🏦",
+            "text": "Payouts straight to your bank"
+          }
+        ],
+        "end": {
+          "title": "Venue owner? Get listed early",
+          "highlight": "listed early",
+          "brandLine": "For turfs · courts · box cricket",
+          "sub": "We're onboarding the first venues now",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Turf owners, raat 11 baje bhi “bhaiya kal 7 baje free hai?” 📞😮‍💨\n\nTownPlay puts your bookings on autopilot. Onboarding the first venues now. DM “LIST” 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: how many booking calls do you get a day? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d04",
+      "date": "2026-10-26",
+      "weekday": "Mon",
+      "audience": "players",
+      "format": "versus",
+      "topic": "Booking a turf: calls vs app",
+      "spec": {
+        "type": "versus",
+        "title": "Booking a turf 😭",
+        "titleMark": "turf",
+        "left": {
+          "label": "The usual way 📞",
+          "lines": [
+            "Call 1: number busy",
+            "Call 2: “8 baje full hai”",
+            "Call 3: “kal call karna”",
+            "Final: 9:30 PM slot, ₹200 extra 💀"
+          ]
+        },
+        "right": {
+          "label": "With TownPlay ⚡",
+          "lines": [
+            "Open the app, see live slots",
+            "Tap 7 PM, pay the advance",
+            "Done. Show up and play ✅"
+          ]
+        },
+        "end": {
+          "title": "Book in seconds, not calls",
+          "highlight": "seconds",
+          "tag": "Send this to your squad 📲",
+          "brandLine": "Turfs · courts · box cricket"
+        }
+      },
+      "caption": "Booking a turf, the usual way 📞📞📞 vs one tap ⚡\n\nWhich one does your squad still do? 👇\n\n#FootballMemes #FriendsMemes #DesiMemes #SportsIndia #RelatableReels",
+      "firstComment": "3 calls minimum, sach bolo 😂👇",
+      "status": "planned"
+    },
+    {
+      "id": "d05",
+      "date": "2026-10-27",
+      "weekday": "Tue",
+      "audience": "events",
+      "format": "chat",
+      "topic": "Comedy show tickets: the friend who pays",
+      "spec": {
+        "type": "chat",
+        "caption": "“Main sabke tickets book kar deti hoon” 💀",
+        "captionMark": "book",
+        "group": "Standup Night 😂",
+        "avatar": "🎤",
+        "members": "Sneha, Kabir, Aman, Vikas, You",
+        "messages": [
+          {
+            "from": "Sneha",
+            "text": "Saturday comedy show hai, chalein? 😂",
+            "time": "6:10 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Tickets kitne ke?",
+            "time": "6:11 PM"
+          },
+          {
+            "from": "Sneha",
+            "text": "₹499. Main sabke book kar deti hoon 🙌",
+            "time": "6:11 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Done, paise kal bhejta 👍",
+            "time": "6:12 PM"
+          },
+          {
+            "from": "Vikas",
+            "text": "Mera bhi kar de, UPI baad mein 🙏",
+            "time": "6:12 PM"
+          },
+          {
+            "chip": "One week later"
+          },
+          {
+            "from": "You",
+            "text": "Sneha abhi bhi ₹1,996 maang rahi hai 💀",
+            "time": "8:40 PM"
+          },
+          {
+            "from": "Sneha",
+            "text": "Main ab kabhi kisi ka ticket nahi karungi 😤",
+            "time": "8:41 PM"
+          }
+        ],
+        "end": {
+          "title": "Har group ki ticket wali dost 😭",
+          "highlight": "ticket wali dost",
+          "tag": "Tag her before the next show 👇",
+          "brandLine": "Events · everyone pays their own ticket"
+        }
+      },
+      "caption": "Har group ki ticket wali dost 😭🎟️\n\nShe booked for everyone. A week later, still chasing ₹1,996 💀\nTag her 👇\n\n#EventsIndia #WeekendPlans #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "Sneha ko uske paise de do yaar 😭👇",
+      "status": "planned"
+    },
+    {
+      "id": "d06",
+      "date": "2026-10-28",
+      "weekday": "Wed",
+      "audience": "owners",
+      "format": "list",
+      "topic": "Owners: types of customers",
+      "spec": {
+        "type": "list",
+        "title": "Every turf owner gets these 5 customers 😂",
+        "titleMark": "5 customers",
+        "items": [
+          {
+            "emoji": "⏰",
+            "title": "“5 min mein pahunch rahe”",
+            "sub": "…40 min late, full time chahiye"
+          },
+          {
+            "emoji": "💸",
+            "title": "“Thoda discount kar do”",
+            "sub": "…har baar, “regular hain”"
+          },
+          {
+            "emoji": "📌",
+            "title": "“Kal ka slot hold karo”",
+            "sub": "…kabhi nahi aate"
+          },
+          {
+            "emoji": "🌙",
+            "title": "Raat 12 baje call",
+            "sub": "“Bhaiya kal 6 baje free hai?”"
+          },
+          {
+            "emoji": "🧾",
+            "title": "“Advance baad mein”",
+            "sub": "…phir slot cancel"
+          }
+        ],
+        "end": {
+          "title": "Turf owners, which one do you get most?",
+          "highlight": "most?",
+          "tag": "Comment the number 👇",
+          "brandLine": "For venue owners · bookings on autopilot",
+          "cta": "DM “LIST” to get listed"
+        }
+      },
+      "caption": "Every turf owner gets these 5 customers 😂\n\nOwners, which one do you get the most? 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: #4 at midnight is the worst 😭 Which one for you?",
+      "status": "planned"
+    },
+    {
+      "id": "d07",
+      "date": "2026-10-29",
+      "weekday": "Thu",
+      "audience": "players",
+      "format": "chat",
+      "topic": "Coaching: 6 AM batch motivation",
+      "spec": {
+        "type": "chat",
+        "caption": "“Kal se 6 AM coaching” 💀",
+        "captionMark": "6 AM",
+        "group": "Badminton Coaching 🏸",
+        "avatar": "🏸",
+        "members": "Aman, Kabir, You",
+        "messages": [
+          {
+            "from": "Aman",
+            "text": "Kal se 6 AM badminton coaching join karte hain 💪",
+            "time": "11:02 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Haan, fitness bhi, game bhi 🔥",
+            "time": "11:03 PM"
+          },
+          {
+            "from": "You",
+            "text": "Pakka? Monthly fee ₹1,500 hai",
+            "time": "11:03 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Bhai bilkul, motivation full hai 💯",
+            "time": "11:04 PM"
+          },
+          {
+            "chip": "Next day, 5:55 AM"
+          },
+          {
+            "from": "You",
+            "text": "Main court pe hoon 🙂",
+            "time": "5:55 AM"
+          },
+          {
+            "typing": "Aman"
+          },
+          {
+            "from": "Aman",
+            "text": "Bhai alarm hi nahi baja 😴",
+            "time": "8:40 AM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Kal se pakka 🙏",
+            "time": "8:41 AM"
+          }
+        ],
+        "end": {
+          "title": "Motivation raat ko, neend subah 😭",
+          "highlight": "neend subah",
+          "tag": "Tag your 6 AM partner 👇",
+          "brandLine": "Coaching batches · memberships"
+        }
+      },
+      "caption": "Motivation raat ko, neend subah 😭🏸\n\nTag your 6 AM partner who never shows up 👇\n\n#BadmintonMemes #BadmintonIndia #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "Aman ka alarm kabhi nahi bajta 😴👇",
+      "status": "planned"
+    },
+    {
+      "id": "d08",
+      "date": "2026-10-30",
+      "weekday": "Fri",
+      "audience": "owners",
+      "format": "versus",
+      "topic": "Owners: before vs after",
+      "spec": {
+        "type": "versus",
+        "title": "Running a turf 😮‍💨",
+        "titleMark": "turf",
+        "left": {
+          "label": "Before 😩",
+          "lines": [
+            "Phone calls till midnight",
+            "Register full of cuttings",
+            "No-shows on Saturday night",
+            "Cash, UPI, udhaar… hisaab kahan?"
+          ]
+        },
+        "right": {
+          "label": "With TownPlay ⚡",
+          "lines": [
+            "Players book live slots themselves",
+            "Advance paid online, fewer no-shows",
+            "Walk-ins and blocks on one calendar",
+            "Earnings and payouts in one place"
+          ]
+        },
+        "end": {
+          "title": "Your venue on autopilot",
+          "highlight": "autopilot",
+          "brandLine": "For turfs · courts · box cricket",
+          "sub": "We're onboarding the first venues now",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Running a turf: before vs after TownPlay ⚡\n\nOnboarding the first venues now. Owners, DM “LIST” 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: which “before” hurts the most? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d09",
+      "date": "2026-10-31",
+      "weekday": "Sat",
+      "audience": "players",
+      "format": "chat",
+      "topic": "Box cricket: team selection",
+      "spec": {
+        "type": "chat",
+        "caption": "Box cricket team selection 💀",
+        "captionMark": "team selection",
+        "group": "Box Cricket 🏏",
+        "avatar": "🏏",
+        "members": "Aman, Kabir, Vikas, Sneha, Rohit +3, You",
+        "messages": [
+          {
+            "from": "Aman",
+            "text": "Captain main aur Kabir, teams bana lete hain 🏏",
+            "time": "6:20 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Pehla pick: Vikas 🔥",
+            "time": "6:20 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Pehla pick: Rohit",
+            "time": "6:21 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Second: Sneha",
+            "time": "6:21 PM"
+          },
+          {
+            "chip": "8 picks later"
+          },
+          {
+            "from": "You",
+            "text": "Aur main? 🙂",
+            "time": "6:24 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Tu umpire ban ja bhai 😂",
+            "time": "6:24 PM"
+          },
+          {
+            "typing": "Kabir"
+          },
+          {
+            "from": "Kabir",
+            "text": "Ya scorer 💀",
+            "time": "6:25 PM"
+          }
+        ],
+        "end": {
+          "title": "Har baar last pick 😭",
+          "highlight": "last pick",
+          "tag": "Tag the one who always gets picked last 👇",
+          "brandLine": "Box cricket · open games"
+        }
+      },
+      "caption": "Har baar last pick 😭🏏\n\nTag the friend who always ends up as umpire 👇\n\n#BoxCricket #CricketMemes #GullyCricket #DesiMemes #RelatableReels",
+      "firstComment": "Umpire bhi important hai bhai 😂👇",
+      "status": "planned"
+    },
+    {
+      "id": "d10",
+      "date": "2026-11-01",
+      "weekday": "Sun",
+      "audience": "players",
+      "format": "list",
+      "topic": "Sunday football lines",
+      "spec": {
+        "type": "list",
+        "title": "Things you hear at every Sunday football game ⚽",
+        "titleMark": "Sunday football",
+        "items": [
+          {
+            "emoji": "⏱️",
+            "title": "“Last goal wins”",
+            "sub": "…phir 3 aur goals"
+          },
+          {
+            "emoji": "🧤",
+            "title": "“Rolling keeper”",
+            "sub": "…koi roll nahi karta"
+          },
+          {
+            "emoji": "🤕",
+            "title": "“Bhai thoda dheere”",
+            "sub": "…5-a-side World Cup final"
+          },
+          {
+            "emoji": "💸",
+            "title": "“Paise baad mein”",
+            "sub": "…kabhi nahi"
+          },
+          {
+            "emoji": "📸",
+            "title": "“Ek photo le lo”",
+            "sub": "…sab thake hue, phir bhi"
+          }
+        ],
+        "end": {
+          "title": "Which one did your squad say today?",
+          "highlight": "today?",
+          "tag": "Send this to the group 📲",
+          "brandLine": "Book turfs · split the bill"
+        }
+      },
+      "caption": "Things you hear at every Sunday football game ⚽😂\n\nWhich one did your squad say today? 👇\n\n#FootballMemes #FriendsMemes #DesiMemes #SportsIndia #RelatableReels",
+      "firstComment": "“Last goal wins” aur 3 goals baad bhi game chalu 😂",
+      "status": "planned"
+    },
+    {
+      "id": "d11",
+      "date": "2026-11-02",
+      "weekday": "Mon",
+      "audience": "owners",
+      "format": "pitch",
+      "topic": "Owners: empty weekday slots",
+      "spec": {
+        "type": "pitch",
+        "kicker": "For venue owners",
+        "hook": "Weekday afternoons = empty turf? 🥲",
+        "hookMark": "empty turf",
+        "problems": [
+          {
+            "emoji": "🕑",
+            "text": "2–5 PM slots empty every weekday"
+          },
+          {
+            "emoji": "📉",
+            "text": "Fixed costs, zero bookings"
+          },
+          {
+            "emoji": "📣",
+            "text": "No easy way to reach new players"
+          }
+        ],
+        "solution": "Fill the empty hours",
+        "solutionMark": "empty hours",
+        "features": [
+          {
+            "emoji": "👥",
+            "text": "Open games: solo players join and fill slots"
+          },
+          {
+            "emoji": "🎓",
+            "text": "Coaching batches on fixed weekday slots"
+          },
+          {
+            "emoji": "🎟️",
+            "text": "Events and tournaments with tickets"
+          }
+        ],
+        "end": {
+          "title": "More players, fewer empty slots",
+          "highlight": "fewer empty slots",
+          "brandLine": "For turfs · courts · box cricket",
+          "sub": "We're onboarding the first venues now",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Weekday afternoons = empty turf? 🥲\n\nOpen games, coaching batches and events fill the quiet hours. Owners, DM “LIST” 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: which hours are emptiest at your venue? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d12",
+      "date": "2026-11-03",
+      "weekday": "Tue",
+      "audience": "players",
+      "format": "chat",
+      "topic": "Pickleball: one game becomes a habit",
+      "spec": {
+        "type": "chat",
+        "caption": "“Pickleball try karein?” 🏓",
+        "captionMark": "Pickleball",
+        "group": "Pickleball Crew 🏓",
+        "avatar": "🏓",
+        "members": "Kabir, Aman, Sneha, Vikas, You",
+        "messages": [
+          {
+            "from": "Kabir",
+            "text": "Bhai pickleball try karein? Sab kar rahe hain 🏓",
+            "time": "7:10 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Ye kya hai, badminton aur tennis ka bachcha? 😂",
+            "time": "7:11 PM"
+          },
+          {
+            "from": "Sneha",
+            "text": "Court ₹800/hour, 4 log 🙌",
+            "time": "7:11 PM"
+          },
+          {
+            "from": "You",
+            "text": "Main paddles le aaunga 👍",
+            "time": "7:12 PM"
+          },
+          {
+            "chip": "After the game"
+          },
+          {
+            "from": "Aman",
+            "text": "Bhai ye toh addictive hai 🔥",
+            "time": "9:05 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Kal phir? Same time? 🏓",
+            "time": "9:05 PM"
+          },
+          {
+            "from": "Vikas",
+            "text": "Mera paddle kab aayega? 😂",
+            "time": "9:06 PM"
+          }
+        ],
+        "end": {
+          "title": "Ek game ka plan, roz ki aadat 😭",
+          "highlight": "roz ki aadat",
+          "tag": "Tag your pickleball partner 👇",
+          "brandLine": "Pickleball · badminton · turfs"
+        }
+      },
+      "caption": "Ek game ka plan, roz ki aadat 😭🏓\n\nWho got your group into pickleball? Tag them 👇\n\n#Pickleball #PickleballIndia #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "Paddle abhi tak nahi aaya Vikas ka 😂",
+      "status": "planned"
+    },
+    {
+      "id": "d13",
+      "date": "2026-11-04",
+      "weekday": "Wed",
+      "audience": "players",
+      "format": "versus",
+      "topic": "Split bill: old way vs split before",
+      "spec": {
+        "type": "versus",
+        "title": "After the game 💸",
+        "titleMark": "game",
+        "left": {
+          "label": "Old way 😩",
+          "lines": [
+            "“Sab ₹150 bhejo”",
+            "Seen by 8 👀",
+            "3 reminders later: 2 paid",
+            "You paid ₹900 extra 🥲"
+          ]
+        },
+        "right": {
+          "label": "TownPlay way ✅",
+          "lines": [
+            "Book and split before the game",
+            "Everyone pays their own share",
+            "No chasing, no udhaar"
+          ]
+        },
+        "end": {
+          "title": "Split before you play",
+          "highlight": "before",
+          "tag": "Send this to your money collector 📲",
+          "brandLine": "Book · play · split the bill"
+        }
+      },
+      "caption": "After the game: “sab ₹150 bhejo” → seen by 8 👀💀\n\nSplit before you play. Send this to your group's money collector 📲\n\n#FootballMemes #FriendsMemes #DesiMemes #SportsIndia #RelatableReels",
+      "firstComment": "Money collector ko tag karo 😭👇",
+      "status": "planned"
+    },
+    {
+      "id": "d14",
+      "date": "2026-11-05",
+      "weekday": "Thu",
+      "audience": "events",
+      "format": "list",
+      "topic": "Diwali party group chat types",
+      "spec": {
+        "type": "list",
+        "title": "Every Diwali party plan 🪔",
+        "titleMark": "Diwali",
+        "items": [
+          {
+            "emoji": "🪔",
+            "title": "“Is baar badi party karte hain”",
+            "sub": "…plan bana 3 hafte pehle"
+          },
+          {
+            "emoji": "🃏",
+            "title": "“Taash toh hoga na?”",
+            "sub": "…har saal wahi"
+          },
+          {
+            "emoji": "👗",
+            "title": "“Dress code rakhte hain”",
+            "sub": "…aadhe log bhool gaye"
+          },
+          {
+            "emoji": "💸",
+            "title": "“Contribution kitna?”",
+            "sub": "…sab chup"
+          },
+          {
+            "emoji": "🏠",
+            "title": "“Kiske ghar pe?”",
+            "sub": "…koi nahi bolta"
+          }
+        ],
+        "end": {
+          "title": "Har saal ka Diwali plan 😭",
+          "highlight": "Diwali plan",
+          "tag": "Tag your party planner 👇",
+          "brandLine": "Events · cafés · group plans"
+        }
+      },
+      "caption": "Every Diwali party plan has these 5 moments 🪔😂\n\nTag your group's party planner 👇\n\n#Diwali #DiwaliParty #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "“Kiske ghar pe?” … sab chup 😂",
+      "status": "planned"
+    },
+    {
+      "id": "d15",
+      "date": "2026-11-06",
+      "weekday": "Fri",
+      "audience": "events",
+      "format": "chat",
+      "topic": "Diwali night event tickets",
+      "spec": {
+        "type": "chat",
+        "caption": "Diwali night event ka plan 🪔",
+        "captionMark": "Diwali night",
+        "group": "Diwali Night 🪔",
+        "avatar": "🪔",
+        "members": "Sneha, Kabir, Vikas, Aman, You",
+        "messages": [
+          {
+            "from": "Sneha",
+            "text": "Diwali night event hai, DJ + food 🎉",
+            "time": "4:15 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Entry kitne ki?",
+            "time": "4:16 PM"
+          },
+          {
+            "from": "Sneha",
+            "text": "₹599, couple ₹999 💃",
+            "time": "4:16 PM"
+          },
+          {
+            "from": "Vikas",
+            "text": "Couple ticket? Mere liye single hi 🥲",
+            "time": "4:17 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Main 2 friends laa raha 🔥",
+            "time": "4:17 PM"
+          },
+          {
+            "from": "You",
+            "text": "Toh 7 log, ₹599 each 🙏",
+            "time": "4:18 PM"
+          },
+          {
+            "typing": "Aman"
+          },
+          {
+            "from": "Aman",
+            "text": "Mere 2 friends free mein? 🙂",
+            "time": "4:19 PM"
+          }
+        ],
+        "end": {
+          "title": "Party ka plan, paise ka drama 😭",
+          "highlight": "paise ka drama",
+          "tag": "Tag your party group 👇",
+          "brandLine": "Event tickets · everyone pays their own"
+        }
+      },
+      "caption": "Party ka plan, paise ka drama 😭🪔\n\n“Mere 2 friends free mein?” 💀 Tag your party group 👇\n\n#Diwali #DiwaliParty #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "Aman ke 2 friends kaun hain 😂👇",
+      "status": "planned"
+    },
+    {
+      "id": "d16",
+      "date": "2026-11-07",
+      "weekday": "Sat",
+      "audience": "owners",
+      "format": "pitch",
+      "topic": "Cafés/venues: selling event tickets",
+      "spec": {
+        "type": "pitch",
+        "kicker": "For cafés & venue owners",
+        "hook": "Hosting an event this Diwali? 🪔",
+        "hookMark": "event",
+        "problems": [
+          {
+            "emoji": "📲",
+            "text": "Bookings in DMs and screenshots"
+          },
+          {
+            "emoji": "🧾",
+            "text": "“Paid” but no money received"
+          },
+          {
+            "emoji": "🚪",
+            "text": "Long queue at the entry"
+          }
+        ],
+        "solution": "Sell tickets the easy way",
+        "solutionMark": "easy way",
+        "features": [
+          {
+            "emoji": "🎟️",
+            "text": "Ticket tiers: early bird, couple, VIP"
+          },
+          {
+            "emoji": "💳",
+            "text": "Online payment, instant confirmation"
+          },
+          {
+            "emoji": "📱",
+            "text": "QR check-in at the door"
+          }
+        ],
+        "end": {
+          "title": "Host events that sell out",
+          "highlight": "sell out",
+          "brandLine": "Event tickets for cafés & venues",
+          "sub": "Free and paid events · cafés · venues",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Hosting an event this Diwali? 🪔\n\nTicket tiers, online payment and QR check-in in one place. Cafés & venues, DM “LIST” 👇\n\n#CafeEvents #EventsIndia #SmallBusinessIndia #CafeOwner #Diwali",
+      "firstComment": "Café owners: what's the hardest part of running events? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d17",
+      "date": "2026-11-08",
+      "weekday": "Sun",
+      "audience": "players",
+      "format": "list",
+      "topic": "Diwali day: types in every group",
+      "spec": {
+        "type": "list",
+        "title": "Diwali night, har group mein 🪔",
+        "titleMark": "har group",
+        "items": [
+          {
+            "emoji": "🎆",
+            "title": "Pataka expert",
+            "sub": "“Bhai ye wala alag hai”"
+          },
+          {
+            "emoji": "🍬",
+            "title": "Mithai inspector",
+            "sub": "…har ghar ki rating"
+          },
+          {
+            "emoji": "🃏",
+            "title": "Taash champion",
+            "sub": "…saal bhar ka hisaab ek raat mein"
+          },
+          {
+            "emoji": "📸",
+            "title": "Photographer",
+            "sub": "…khud kisi photo mein nahi"
+          },
+          {
+            "emoji": "😴",
+            "title": "Early sleeper",
+            "sub": "…10 baje gayab"
+          }
+        ],
+        "end": {
+          "title": "Happy Diwali from TownPlay 🪔",
+          "highlight": "Happy Diwali",
+          "tag": "Tag your Diwali squad 👇",
+          "brandLine": "Play more · plan more"
+        }
+      },
+      "caption": "Happy Diwali 🪔✨ Every group has these 5 on Diwali night 😂\n\nTag your Diwali squad 👇\n\n#Diwali #DiwaliParty #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "Happy Diwali from TownPlay 🪔 Which one are you?",
+      "status": "planned"
+    },
+    {
+      "id": "d18",
+      "date": "2026-11-09",
+      "weekday": "Mon",
+      "audience": "owners",
+      "format": "versus",
+      "topic": "Owners: Saturday no-shows",
+      "spec": {
+        "type": "versus",
+        "title": "Saturday night at your turf 🌙",
+        "titleMark": "Saturday night",
+        "left": {
+          "label": "Without advance 😬",
+          "lines": [
+            "Slot booked on a call",
+            "Team texts “10 min late”",
+            "Never shows up",
+            "Slot empty, ₹1,500 gone"
+          ]
+        },
+        "right": {
+          "label": "With TownPlay ✅",
+          "lines": [
+            "Player pays the advance online",
+            "Slot locked, no double booking",
+            "No-show? Advance already paid"
+          ]
+        },
+        "end": {
+          "title": "No more no-show losses",
+          "highlight": "no-show",
+          "brandLine": "For turfs · courts · box cricket",
+          "sub": "We're onboarding the first venues now",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Saturday night slot booked… team never came 😬\n\nWith an online advance, no-shows stop costing you. Owners, DM “LIST” 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: how many no-shows last month? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d19",
+      "date": "2026-11-10",
+      "weekday": "Tue",
+      "audience": "players",
+      "format": "chat",
+      "topic": "Rain on game day",
+      "spec": {
+        "type": "chat",
+        "caption": "Game day pe baarish 🌧️",
+        "captionMark": "baarish",
+        "group": "Evening Football ⚽",
+        "avatar": "⚽",
+        "members": "Rahul, Aman, Kabir, Vikas +6, You",
+        "messages": [
+          {
+            "from": "Rahul",
+            "text": "Turf 7 baje, sab ready? ⚽",
+            "time": "5:40 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Bahar dekh, baarish ho rahi 🌧️",
+            "time": "5:41 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Bhai turf ka advance diya hai 😭",
+            "time": "5:41 PM"
+          },
+          {
+            "from": "You",
+            "text": "Cancel karein? Refund milega?",
+            "time": "5:42 PM"
+          },
+          {
+            "from": "Rahul",
+            "text": "Bhaiya bol rahe “next time adjust kar denge” 🙂",
+            "time": "5:44 PM"
+          },
+          {
+            "chip": "9:00 PM"
+          },
+          {
+            "from": "Vikas",
+            "text": "Baarish band. Abhi chalein? 😂",
+            "time": "9:00 PM"
+          }
+        ],
+        "end": {
+          "title": "Advance gaya, baarish aayi 😭",
+          "highlight": "baarish aayi",
+          "tag": "Tag your rain-day squad 👇",
+          "brandLine": "Cancellation & refund rules shown before you book"
+        }
+      },
+      "caption": "Advance diya, baarish aayi 😭🌧️\n\nTag your rain-day squad 👇\n\n#FootballMemes #FriendsMemes #DesiMemes #SportsIndia #RelatableReels",
+      "firstComment": "9 baje baarish band ho jaati hai, hamesha 😂",
+      "status": "planned"
+    },
+    {
+      "id": "d20",
+      "date": "2026-11-11",
+      "weekday": "Wed",
+      "audience": "players",
+      "format": "list",
+      "topic": "Sports WhatsApp group types",
+      "spec": {
+        "type": "list",
+        "title": "Every sports WhatsApp group has these 5 people 📱",
+        "titleMark": "5 people",
+        "items": [
+          {
+            "emoji": "📊",
+            "title": "Poll banane wala",
+            "sub": "…koi vote nahi karta"
+          },
+          {
+            "emoji": "👍",
+            "title": "Sirf thumbs up",
+            "sub": "…aata kabhi nahi"
+          },
+          {
+            "emoji": "🌅",
+            "title": "Good morning forwarder",
+            "sub": "…sports group mein bhi"
+          },
+          {
+            "emoji": "🗓️",
+            "title": "“Kal pakka”",
+            "sub": "…kal kabhi nahi aata"
+          },
+          {
+            "emoji": "🦸",
+            "title": "Admin",
+            "sub": "…booking, paise, reminder, sab akela"
+          }
+        ],
+        "end": {
+          "title": "Which one are you?",
+          "highlight": "you?",
+          "tag": "Comment your number 👇",
+          "brandLine": "Open games · split payments · reminders"
+        }
+      },
+      "caption": "Every sports WhatsApp group has these 5 people 📱😂\n\nWhich number are you? 👇\n\n#FriendsMemes #DesiMemes #SportsIndia #WeekendPlans #RelatableReels",
+      "firstComment": "Main #2 hoon 👍 (aaunga nahi) 😂",
+      "status": "planned"
+    },
+    {
+      "id": "d21",
+      "date": "2026-11-12",
+      "weekday": "Thu",
+      "audience": "owners",
+      "format": "pitch",
+      "topic": "Owners: payments and payouts",
+      "spec": {
+        "type": "pitch",
+        "kicker": "For venue owners",
+        "hook": "Hisaab ka register ab band? 📒",
+        "hookMark": "register",
+        "problems": [
+          {
+            "emoji": "💵",
+            "text": "Cash, UPI, udhaar, sab mix"
+          },
+          {
+            "emoji": "🧮",
+            "text": "Month end: kitna aaya, pata nahi"
+          },
+          {
+            "emoji": "📞",
+            "text": "Chasing teams for the balance"
+          }
+        ],
+        "solution": "Every rupee tracked",
+        "solutionMark": "tracked",
+        "features": [
+          {
+            "emoji": "📊",
+            "text": "Earnings: online and at-venue payments"
+          },
+          {
+            "emoji": "🏦",
+            "text": "Payouts straight to your bank"
+          },
+          {
+            "emoji": "🧾",
+            "text": "Every booking, refund and payout recorded"
+          }
+        ],
+        "end": {
+          "title": "Run your venue like a pro",
+          "highlight": "like a pro",
+          "brandLine": "For turfs · courts · box cricket",
+          "sub": "We're onboarding the first venues now",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Cash, UPI, udhaar… month end pe hisaab? 📒😮‍💨\n\nEvery rupee tracked, payouts to your bank. Owners, DM “LIST” 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: register or Excel? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d22",
+      "date": "2026-11-13",
+      "weekday": "Fri",
+      "audience": "players",
+      "format": "chat",
+      "topic": "Group can't decide the sport",
+      "spec": {
+        "type": "chat",
+        "caption": "Weekend pe kya khelein? 🤔",
+        "captionMark": "kya khelein?",
+        "group": "College Gang 🎓",
+        "avatar": "🎓",
+        "members": "Aman, Sneha, Kabir, Vikas, You",
+        "messages": [
+          {
+            "from": "You",
+            "text": "Weekend pe kuch khelte hain? 🏏⚽🏸",
+            "time": "8:10 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Cricket? 🏏",
+            "time": "8:10 PM"
+          },
+          {
+            "from": "Sneha",
+            "text": "Badminton 🏸",
+            "time": "8:11 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Football ⚽",
+            "time": "8:11 PM"
+          },
+          {
+            "from": "Vikas",
+            "text": "Main toh bas khaane aaunga 🍕",
+            "time": "8:12 PM"
+          },
+          {
+            "chip": "45 messages later"
+          },
+          {
+            "from": "You",
+            "text": "Final kya hua?",
+            "time": "10:30 PM"
+          },
+          {
+            "from": "Aman",
+            "text": "Ghar pe Ludo 🎲",
+            "time": "10:31 PM"
+          }
+        ],
+        "end": {
+          "title": "3 sports, 1 Ludo 😭",
+          "highlight": "1 Ludo",
+          "tag": "Tag the group that never decides 👇",
+          "brandLine": "Games · events · cafés near you"
+        }
+      },
+      "caption": "3 sports, 1 Ludo 😭🎲\n\nTag the group that never decides 👇\n\n#FriendsMemes #DesiMemes #SportsIndia #WeekendPlans #RelatableReels",
+      "firstComment": "Ludo bhi sport hai, bolo 😂",
+      "status": "planned"
+    },
+    {
+      "id": "d23",
+      "date": "2026-11-14",
+      "weekday": "Sat",
+      "audience": "players",
+      "format": "versus",
+      "topic": "Solo player: open games",
+      "spec": {
+        "type": "versus",
+        "title": "Want to play, but no team? 🥲",
+        "titleMark": "no team",
+        "left": {
+          "label": "Before 😩",
+          "lines": [
+            "Ask in 5 groups",
+            "“Bhai is week nahi”",
+            "Watch others play on Instagram"
+          ]
+        },
+        "right": {
+          "label": "With open games ⚡",
+          "lines": [
+            "See games near you needing players",
+            "Join in one tap, pay your share",
+            "Show up, play, make new friends"
+          ]
+        },
+        "end": {
+          "title": "Your next game is 1 tap away",
+          "highlight": "1 tap away",
+          "tag": "Send this to your solo-player friend 📲",
+          "brandLine": "Open games near you"
+        }
+      },
+      "caption": "Want to play but no team? 🥲\n\nOpen games let you join a game near you and pay just your share. Send this to your solo-player friend 📲\n\n#FootballMemes #FriendsMemes #DesiMemes #SportsIndia #RelatableReels",
+      "firstComment": "Kaun kaun solo khelna chahta hai? 🙋👇",
+      "status": "planned"
+    },
+    {
+      "id": "d24",
+      "date": "2026-11-15",
+      "weekday": "Sun",
+      "audience": "owners",
+      "format": "list",
+      "topic": "Owners: things every turf owner says",
+      "spec": {
+        "type": "list",
+        "title": "Things every turf owner has said 😂",
+        "titleMark": "turf owner",
+        "items": [
+          {
+            "emoji": "📞",
+            "title": "“Haan ji, 7 baje free hai”",
+            "sub": "…20 times a day"
+          },
+          {
+            "emoji": "💡",
+            "title": "“Lights 10 min extra nahi”",
+            "sub": "…har team ko"
+          },
+          {
+            "emoji": "🧴",
+            "title": "“Bottle andar mat laana”",
+            "sub": "…turf pe 10 bottles"
+          },
+          {
+            "emoji": "💸",
+            "title": "“Advance bhejo pehle”",
+            "sub": "“bhaiya pahunch ke de denge”"
+          },
+          {
+            "emoji": "🌧️",
+            "title": "“Baarish mein refund nahi”",
+            "sub": "…phir bhi 30 calls"
+          }
+        ],
+        "end": {
+          "title": "Turf owners, did we miss one?",
+          "highlight": "miss one?",
+          "tag": "Comment below 👇",
+          "brandLine": "For venue owners",
+          "cta": "DM “LIST” to get listed"
+        }
+      },
+      "caption": "Things every turf owner has said 😂📞\n\nOwners, did we miss one? 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: add yours below 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d25",
+      "date": "2026-11-16",
+      "weekday": "Mon",
+      "audience": "players",
+      "format": "chat",
+      "topic": "Membership: 20 days, josh 3 days",
+      "spec": {
+        "type": "chat",
+        "caption": "“Monthly membership le lein?” 🏸",
+        "captionMark": "membership",
+        "group": "Morning Badminton 🌅",
+        "avatar": "🌅",
+        "members": "Aman, Kabir, Sneha, You",
+        "messages": [
+          {
+            "from": "Aman",
+            "text": "Monthly membership le lein? ₹2,000 mein 20 sessions 🏸",
+            "time": "9:00 PM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Haan, roz aayenge 💪",
+            "time": "9:01 PM"
+          },
+          {
+            "from": "Sneha",
+            "text": "Main bhi in 🔥",
+            "time": "9:01 PM"
+          },
+          {
+            "chip": "Day 1: 4/4 present"
+          },
+          {
+            "chip": "Day 7: 2/4 present"
+          },
+          {
+            "chip": "Day 20"
+          },
+          {
+            "from": "You",
+            "text": "Sirf main bacha hoon 🙂",
+            "time": "6:05 AM"
+          },
+          {
+            "from": "Kabir",
+            "text": "Bhai membership extend ho sakti hai? 😅",
+            "time": "9:30 AM"
+          }
+        ],
+        "end": {
+          "title": "Membership 20 din, josh 3 din 😭",
+          "highlight": "josh 3 din",
+          "tag": "Tag your morning partner 👇",
+          "brandLine": "Memberships · coaching batches"
+        }
+      },
+      "caption": "Membership 20 din, josh 3 din 😭🏸\n\nTag your morning partner 👇\n\n#BadmintonMemes #BadmintonIndia #FriendsMemes #DesiMemes #RelatableReels",
+      "firstComment": "Day 20 tak kaun bacha tha tumhare group mein? 😂",
+      "status": "planned"
+    },
+    {
+      "id": "d26",
+      "date": "2026-11-17",
+      "weekday": "Tue",
+      "audience": "owners",
+      "format": "versus",
+      "topic": "Academies: batches and memberships",
+      "spec": {
+        "type": "versus",
+        "title": "Coaching academy owner? 🎓",
+        "titleMark": "academy owner",
+        "left": {
+          "label": "The register way 📒",
+          "lines": [
+            "Fees in cash, reminders on WhatsApp",
+            "Who renewed? Who didn't?",
+            "Batch slots clash with bookings"
+          ]
+        },
+        "right": {
+          "label": "With TownPlay ✅",
+          "lines": [
+            "Members pay and renew online",
+            "Batch slots reserved on your calendar",
+            "Attendance in one tap"
+          ]
+        },
+        "end": {
+          "title": "Run batches without the chaos",
+          "highlight": "without the chaos",
+          "brandLine": "For academies & coaches",
+          "sub": "Coaching · memberships · venues",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Coaching academy owners: fees, renewals and batch slots, without the register 📒\n\nDM “LIST” 👇\n\n#SportsAcademy #CoachingCentre #SportsBusiness #SmallBusinessIndia #Badminton",
+      "firstComment": "Academy owners: how do you track renewals today? 👇",
+      "status": "planned"
+    },
+    {
+      "id": "d27",
+      "date": "2026-11-18",
+      "weekday": "Wed",
+      "audience": "players",
+      "format": "list",
+      "topic": "Box cricket batsman types",
+      "spec": {
+        "type": "list",
+        "title": "Every box cricket match has these 5 batsmen 🏏",
+        "titleMark": "5 batsmen",
+        "items": [
+          {
+            "emoji": "💥",
+            "title": "Sirf six",
+            "sub": "…ya out, beech mein kuch nahi"
+          },
+          {
+            "emoji": "🐢",
+            "title": "Test match specialist",
+            "sub": "…10 balls, 3 runs"
+          },
+          {
+            "emoji": "🙅",
+            "title": "“Trial ball tha”",
+            "sub": "…har out pe"
+          },
+          {
+            "emoji": "🧱",
+            "title": "“Wall pe laga, 4 hai”",
+            "sub": "…naya rule, abhi bana"
+          },
+          {
+            "emoji": "🏃",
+            "title": "Running between wickets",
+            "sub": "…30 foot ke box mein"
+          }
+        ],
+        "end": {
+          "title": "Which batsman are you?",
+          "highlight": "you?",
+          "tag": "Comment your number 👇",
+          "brandLine": "Box cricket · turfs · split the cost"
+        }
+      },
+      "caption": "Every box cricket match has these 5 batsmen 🏏😂\n\nWhich one are you? 👇\n\n#BoxCricket #CricketMemes #GullyCricket #DesiMemes #RelatableReels",
+      "firstComment": "#3 “Trial ball tha” wala har team mein 💀",
+      "status": "planned"
+    },
+    {
+      "id": "d28",
+      "date": "2026-11-19",
+      "weekday": "Thu",
+      "audience": "owners",
+      "format": "pitch",
+      "topic": "Owners: early access call",
+      "spec": {
+        "type": "pitch",
+        "kicker": "Venue owners · early access",
+        "hook": "Be one of the first venues on TownPlay 🚀",
+        "hookMark": "first venues",
+        "problems": [
+          {
+            "emoji": "📞",
+            "text": "Tired of booking calls?"
+          },
+          {
+            "emoji": "🚫",
+            "text": "Losing money to no-shows?"
+          },
+          {
+            "emoji": "🕑",
+            "text": "Empty weekday slots?"
+          }
+        ],
+        "solution": "One app for your venue",
+        "solutionMark": "One app",
+        "features": [
+          {
+            "emoji": "📅",
+            "text": "Live calendar and online booking"
+          },
+          {
+            "emoji": "👥",
+            "text": "Open games, coaching batches, events"
+          },
+          {
+            "emoji": "🏦",
+            "text": "Advance online, payouts to your bank"
+          }
+        ],
+        "end": {
+          "title": "Get listed early",
+          "highlight": "early",
+          "brandLine": "For turfs · courts · academies",
+          "sub": "We're onboarding venues city by city",
+          "cta": "DM “LIST” to @_town_play"
+        }
+      },
+      "caption": "Venue owners: be one of the first on TownPlay 🚀\n\nLive calendar, online advance, open games, batches, events and payouts. DM “LIST” 👇\n\n#TurfOwner #SportsBusiness #SmallBusinessIndia #VenueOwner #BoxCricket",
+      "firstComment": "Owners: which feature would help you most? 👇",
+      "status": "planned"
+    }
+  ]
+}
